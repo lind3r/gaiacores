@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "terralink:raw_coffee_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "terralink:raw_coffee"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "terralink:coffee_block",
+    "terralink:raw_coffee_block",
+    "terralink:coffee_ore",
+    "terralink:coffee_deepslate_ore"
+  ]
+}
