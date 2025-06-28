@@ -1,6 +1,8 @@
 package com.seb.terralink.items;
 
 import com.seb.terralink.TerraLinkMain;
+import com.seb.terralink.items.custom.EsotericScannerItem;
+import com.seb.terralink.items.custom.FuelItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -12,9 +14,15 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, TerraLinkMain.MOD_ID);
 
     public static final RegistryObject<Item> COFFEE = ITEMS.register("coffee",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().food(ModFoodProperties.COFFEE)));
     public static final RegistryObject<Item> RAW_COFFEE = ITEMS.register("raw_coffee",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> COOL_FUEL = ITEMS.register("cool_fuel",
+            () -> new FuelItem(new Item.Properties(), 200));
+
+    public static final RegistryObject<Item> ESOTERIC_SCANNER = ITEMS.register("esoteric_scanner",
+            () -> new EsotericScannerItem(new Item.Properties().durability(32)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

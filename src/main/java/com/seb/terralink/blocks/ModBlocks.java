@@ -1,6 +1,7 @@
 package com.seb.terralink.blocks;
 
 import com.seb.terralink.TerraLinkMain;
+import com.seb.terralink.blocks.custom.EnergeticEsotericCore;
 import com.seb.terralink.items.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -22,7 +23,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ENERGETIC_ESOTERIC_CORE =
             registerBlockAndBlockItem("energetic_esoteric_core",
-                    () -> new Block(BlockBehaviour.Properties.of()
+                    () -> new EnergeticEsotericCore(BlockBehaviour.Properties.of()
                             .strength(3f)));
 
     public static final RegistryObject<Block> RAW_COFFEE_BLOCK =

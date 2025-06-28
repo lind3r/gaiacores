@@ -1,12 +1,19 @@
 {
   "item.terralink.coffee": "coffee -From-En_us JSON",
   "item.terralink.raw_coffee": "raw_coffee -From-En_us JSON",
+  "item.terralink.esoteric_scanner": "Esoteric scanner",
 
   "block.terralink.coffee_block": "Coffee block From-En_us JSON",
   "block.terralink.raw_coffee_block": "raw_coffee_block -From-En_us JSON",
   "block.terralink.coffee_ore": "Coffee ore block From-En_us JSON",
   "block.terralink.coffee_deepslate_ore": "Coffee deepslate ore -From-En_us JSON",
+  "block.terralink.energetic_esoteric_core": "Energetic Esoteric Core",
 
   "creativetab.terralink.coffe_items": "coffee items tab",
-  "creativetab.terralink.coffe_blocks": "coffee blocks tab"
+  "creativetab.terralink.coffe_blocks": "coffee blocks tab",
+
+  "tooltip.terralink.hold_shift": "Hold §eShift§r for more information",
+  "tooltip.terralink.esoteric_scanner": "The §5Esoteric Scanner§r scans for §5Esoteric Cores§r when held. It will beep at a rate that increases the closer you are to a core.",
+  "tooltip.terralink.esoteric_core": "§5Esoteric Cores§r can be found around the world and generates different resources depending on the type of core, assuming that the correct fuel and/or conditions are provided.",
+  "tooltip.terralink.energetic_esoteric_core": "§9Energetic§r §5Esoteric Cores§r will spawn basic ores in a 3x3x3 area around it when powered"
 }

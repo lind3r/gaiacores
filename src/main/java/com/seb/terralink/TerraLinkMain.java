@@ -41,9 +41,6 @@ public class TerraLinkMain
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
-
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -51,23 +48,6 @@ public class TerraLinkMain
     private void commonSetup(final FMLCommonSetupEvent event)
     {
 
-    }
-
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.COFFEE);
-            event.accept(ModItems.RAW_COFFEE);
-        }
-
-        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(ModBlocks.COFFEE_BLOCK);
-            event.accept(ModBlocks.RAW_COFFEE_BLOCK);
-            event.accept(ModBlocks.COFFEE_ORE);
-            event.accept(ModBlocks.COFFEE_DEEPSLATE_ORE);
-            event.accept(ModBlocks.ENERGETIC_ESOTERIC_CORE);
-        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

@@ -21,6 +21,8 @@ public class ModCreativeModsTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.COFFEE.get());
                         output.accept(ModItems.RAW_COFFEE.get());
+                        output.accept(ModItems.ESOTERIC_SCANNER.get());
+                        output.accept(ModItems.COOL_FUEL.get());
                     }).build());
 
     public static final RegistryObject<CreativeModeTab> COFFEE_BLOCKS_TAB = CREATIVE_MODE_TABS
@@ -35,8 +37,6 @@ public class ModCreativeModsTabs {
                     output.accept(ModBlocks.COFFEE_DEEPSLATE_ORE.get());
                     output.accept(ModBlocks.ENERGETIC_ESOTERIC_CORE.get());
                 }).build());
-
-
 
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TABS.register(eventBus);
