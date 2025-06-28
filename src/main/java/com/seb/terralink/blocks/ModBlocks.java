@@ -24,7 +24,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> ENERGETIC_ESOTERIC_CORE =
             registerBlockAndBlockItem("energetic_esoteric_core",
                     () -> new EnergeticEsotericCore(BlockBehaviour.Properties.of()
-                            .strength(3f)));
+                            .strength(3f)
+                            .noLootTable()));
 
     public static final RegistryObject<Block> RAW_COFFEE_BLOCK =
             registerBlockAndBlockItem("raw_coffee_block",

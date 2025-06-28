@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "terralink:block/energetic_esoteric_core"
+  }
+}

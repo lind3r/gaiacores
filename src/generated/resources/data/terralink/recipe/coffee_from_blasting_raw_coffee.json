@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.25,
+  "group": "coffee",
+  "ingredient": {
+    "item": "terralink:raw_coffee"
+  },
+  "result": {
+    "id": "terralink:coffee"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "terralink:raw_coffee_block"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "terralink:blocks/raw_coffee_block"
+}

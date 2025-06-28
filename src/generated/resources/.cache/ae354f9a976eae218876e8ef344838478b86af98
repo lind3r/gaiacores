@@ -1,0 +1,4 @@
+// 1.21.1	2025-06-29T00:23:25.2432939	Tags for minecraft:block mod id terralink
+9834f59fb7dcaaae63ad1ca3bede9a48e26c3e3f data/minecraft/tags/block/mineable/pickaxe.json
+6867c7ac1441ff52e7defd397dc5bc2ba38be9fe data/minecraft/tags/block/needs_diamond_tool.json
+faeadc129e6cfed8ecc7c74817a492656940b830 data/minecraft/tags/block/needs_iron_tool.json
