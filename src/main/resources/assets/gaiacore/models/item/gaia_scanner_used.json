@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gaiacore:item/gaia_scanner"
+    "layer0": "gaiacore:item/gaia_scanner_used"
   }
 }

@@ -45,7 +45,7 @@ public class GaiaScannerItem extends Item {
             // Save block name into item's custom component
             context.getItemInHand().set(ModDataComponentTypes.BLOCK_NAME.get(), clickedBlock.getName());
 
-            player.displayClientMessage(Component.literal("Saved block: " + clickedBlock.getName().getString()), true);
+            player.displayClientMessage(Component.literal("Saved block information: " + clickedBlock.getName().getString()), true);
             return InteractionResult.SUCCESS;
         }
 
@@ -122,7 +122,7 @@ public class GaiaScannerItem extends Item {
         if (clickedBlockName != null) {
             Component styled = ComponentUtils.wrapInSquareBrackets(clickedBlockName.copy())
                     .withStyle(ChatFormatting.AQUA);
-            pTooltipComponents.add(Component.literal("Linked Block: ").append(styled));
+            pTooltipComponents.add(Component.literal("Saved block information: ").append(styled));
 
         }
 

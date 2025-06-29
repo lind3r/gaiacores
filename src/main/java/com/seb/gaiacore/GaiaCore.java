@@ -6,6 +6,7 @@ import com.seb.gaiacore.component.ModDataComponentTypes;
 import com.seb.gaiacore.sounds.ModSounds;
 import com.seb.gaiacore.util.ModCreativeModsTabs;
 import com.seb.gaiacore.items.ModItems;
+import com.seb.gaiacore.util.ModItemProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -67,9 +68,7 @@ public class GaiaCore
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            ModItemProperties.addCustomItemProperties();
         }
     }
 }

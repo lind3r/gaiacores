@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gaia_scanner": {
+      "conditions": {
+        "items": [
+          {
+            "items": "gaiacore:gaia_scanner"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "gaiacore:gaia_scanner_reset"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_gaia_scanner"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "gaiacore:gaia_scanner_reset"
+    ]
+  }
+}

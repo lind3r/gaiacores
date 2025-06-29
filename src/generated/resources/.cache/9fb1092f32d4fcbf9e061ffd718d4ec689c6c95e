@@ -1,1 +1,5 @@
-// 1.21.1	2025-06-29T12:25:44.2249419	Recipes
+// 1.21.1	2025-06-29T22:57:38.6712318	Recipes
+fdadc8a35a4344b8297c6f334900b75a1e6d5849 data/gaiacore/advancement/recipes/misc/gaia_scanner.json
+642a27b06aef351f9efa713a20bef10414fe2d2e data/gaiacore/advancement/recipes/misc/gaia_scanner_reset.json
+aead4bd9e13d0c9a6b217c88d2368f631f2e05ee data/gaiacore/recipe/gaia_scanner.json
+84e09778659193cff306f80fec1751ae61584705 data/gaiacore/recipe/gaia_scanner_reset.json
