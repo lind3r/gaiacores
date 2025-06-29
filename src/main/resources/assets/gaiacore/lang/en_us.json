@@ -1,0 +1,14 @@
+{
+  "item.gaiacore.coffee": "Coffee",
+  "item.gaiacore.gaia_scanner": "Gaia Scanner",
+
+  "block.gaiacore.energetic_gaia_core": "Energetic Gaia Core",
+
+  "creativetab.gaiacore.items": "Gaiacore Items",
+  "creativetab.gaiacore.blocks": "Gaiacore Blocks",
+
+  "tooltip.gaiacore.hold_shift": "Hold §eShift§r for more information",
+  "tooltip.gaiacore.gaia_scanner": "The §5Gaia Scanner§r scans for §5Gaia Cores§r when held. It will beep at a rate that increases the closer you are to a core.",
+  "tooltip.gaiacore.gaia_core": "§5Gaia Cores§r can be found around the world and generates different resources depending on the type of core, assuming that the correct fuel and/or conditions are provided.",
+  "tooltip.gaiacore.energetic_gaia_core": "§9Energetic§r §5Gaia Cores§r will spawn basic ores on each non-input side when powered"
+}

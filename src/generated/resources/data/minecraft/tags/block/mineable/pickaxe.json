@@ -1,9 +1,5 @@
 {
   "values": [
-    "terralink:coffee_block",
-    "terralink:raw_coffee_block",
-    "terralink:coffee_ore",
-    "terralink:coffee_deepslate_ore",
-    "terralink:energetic_esoteric_core"
+    "gaiacore:energetic_gaia_core"
   ]
 }
