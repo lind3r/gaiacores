@@ -8,12 +8,12 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-public class EnergeticGaiaCore extends GaiaCoreBase {
+public class VolcanicGaiaCore extends GaiaCoreBase {
     Variant variant;
 
-    public EnergeticGaiaCore(Properties properties) {
+    public VolcanicGaiaCore(Properties properties) {
         super(properties);
-        this.variant = Variant.ENERGETIC;
+        this.variant = Variant.VOLCANIC;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class EnergeticGaiaCore extends GaiaCoreBase {
 
         if (Screen.hasShiftDown()) {
             pTooltipComponents.add(Component.translatable(""));
-            pTooltipComponents.add(Component.translatable("tooltip.gaiacore.energetic_gaia_core"));
+            pTooltipComponents.add(Component.translatable("tooltip.gaiacore.volcanic_gaia_core"));
         }
     }
 

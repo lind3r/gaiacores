@@ -2,6 +2,8 @@ package com.seb.gaiacore;
 
 import com.mojang.logging.LogUtils;
 import com.seb.gaiacore.blocks.ModBlocks;
+import com.seb.gaiacore.component.ModDataComponentTypes;
+import com.seb.gaiacore.sounds.ModSounds;
 import com.seb.gaiacore.util.ModCreativeModsTabs;
 import com.seb.gaiacore.items.ModItems;
 import net.minecraft.client.Minecraft;
@@ -38,6 +40,8 @@ public class GaiaCore
         ModCreativeModsTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModDataComponentTypes.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

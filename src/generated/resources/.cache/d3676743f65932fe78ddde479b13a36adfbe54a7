@@ -1,4 +1,9 @@
-// 1.21.1	2025-06-29T12:25:44.2249419	Block States: gaiacore
-5357ab058175a33094167a35320c5e9c8547268b assets/gaiacore/blockstates/energetic_gaia_core.json
-ca3edf82f39b2739a9c3612862e5aa6e45976fd7 assets/gaiacore/models/block/energetic_gaia_core.json
-c17ba050bbe658545e95d95213b4661cb3163bf5 assets/gaiacore/models/item/energetic_gaia_core.json
+// 1.21.1	2025-06-29T14:29:38.0689963	Block States: gaiacore
+e798b1e1682ebd67352f55302b8170fa7a57e8a3 assets/gaiacore/blockstates/energetic_gaia_core.json
+400f97abf5216890f426bae79d0ac2405ceff4fc assets/gaiacore/blockstates/volcanic_gaia_core.json
+761ddae25fc60725daa086333f042ecfbda4dc87 assets/gaiacore/models/block/energetic_gaia_core_powered.json
+d680871b3895781cc8f490a75fd8b880de7ffdc0 assets/gaiacore/models/block/energetic_gaia_core_unpowered.json
+b89e11c7527d6180c04d4d4cd70ecc9410b98bf7 assets/gaiacore/models/block/volcanic_gaia_core_powered.json
+4a5b193fd655c964fc8b905181ad6af32c0e3e75 assets/gaiacore/models/block/volcanic_gaia_core_unpowered.json
+7ceb34765689adb1dc0adf0e60e14ea60ec40200 assets/gaiacore/models/item/energetic_gaia_core.json
+4c93bfc5cb040e1655704bc1cfa148953188b4d3 assets/gaiacore/models/item/volcanic_gaia_core.json

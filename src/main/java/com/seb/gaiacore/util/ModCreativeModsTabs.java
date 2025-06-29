@@ -15,8 +15,8 @@ public class ModCreativeModsTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, GaiaCore.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> COFFEE_ITEMS_TAB = CREATIVE_MODE_TABS
-            .register("coffee_items_tab", () -> CreativeModeTab.builder()
+    public static final RegistryObject<CreativeModeTab> GAIACORE_ITEMS_TAB = CREATIVE_MODE_TABS
+            .register("gaiacore_items_tab", () -> CreativeModeTab.builder()
                     .icon(() -> new ItemStack(ModItems.COFFEE.get()))
                     .title(Component.translatable("creativetab.gaiacore.items"))
                     .displayItems((itemDisplayParameters, output) -> {
@@ -24,13 +24,14 @@ public class ModCreativeModsTabs {
                         output.accept(ModItems.GAIA_SCANNER.get());
                     }).build());
 
-    public static final RegistryObject<CreativeModeTab> COFFEE_BLOCKS_TAB = CREATIVE_MODE_TABS
-        .register("coffee_blocks_tab", () -> CreativeModeTab.builder()
-                .withTabsBefore(COFFEE_ITEMS_TAB.getId())
+    public static final RegistryObject<CreativeModeTab> GAIACORE_BLOCKS_TAB = CREATIVE_MODE_TABS
+        .register("gaiacore_blocks_tab", () -> CreativeModeTab.builder()
+                .withTabsBefore(GAIACORE_ITEMS_TAB.getId())
                 .icon(() -> new ItemStack(ModBlocks.ENERGETIC_GAIA_CORE.get()))
                 .title(Component.translatable("creativetab.gaiacore.blocks"))
                 .displayItems((itemDisplayParameters, output) -> {
                     output.accept(ModBlocks.ENERGETIC_GAIA_CORE.get());
+                    output.accept(ModBlocks.VOLCANIC_GAIA_CORE.get());
                 }).build());
 
     public static void register(IEventBus eventBus) {

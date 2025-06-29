@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "gaiacore:block/volcanic_gaia_core_unpowered"
+    },
+    "powered=true": {
+      "model": "gaiacore:block/volcanic_gaia_core_powered"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gaiacore:block/energetic_gaia_core"
+    "all": "gaiacore:block/energetic_gaia_core_powered"
   }
 }

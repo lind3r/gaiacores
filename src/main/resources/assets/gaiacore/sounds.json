@@ -1,0 +1,11 @@
+{
+  "scanner_beep": {
+    "subtitle": "item.gaiacore.scanner_beep",
+    "sounds": [
+      {
+        "name": "gaiacore:scanner_beep",
+        "stream": false
+      }
+    ]
+  }
+}

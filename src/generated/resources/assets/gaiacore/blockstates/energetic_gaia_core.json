@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
-      "model": "gaiacore:block/energetic_gaia_core"
+    "powered=false": {
+      "model": "gaiacore:block/energetic_gaia_core_unpowered"
+    },
+    "powered=true": {
+      "model": "gaiacore:block/energetic_gaia_core_powered"
     }
   }
 }
