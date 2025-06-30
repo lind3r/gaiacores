@@ -36,7 +36,7 @@ public class ModConfiguredFeatures {
 //        RuleTest netherrackReplaceables = new BlockMatchTest(Blocks.NETHERRACK);
 //        RuleTest endReplaceables = new BlockMatchTest(Blocks.END_STONE);
 
-        register(context, ENERGETIC_GAIA_CORE_KEY, Feature.ORE, new OreConfiguration(stoneReplaceables,
+        register(context, ENERGETIC_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(stoneReplaceables,
                 ModBlocks.ENERGETIC_GAIA_CORE.get().defaultBlockState(), 1));
         register(context, VOLCANIC_GAIA_CORE_KEY, Feature.ORE, new OreConfiguration(deepslateReplaceables,
                 ModBlocks.VOLCANIC_GAIA_CORE.get().defaultBlockState(), 1));

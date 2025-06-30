@@ -7,6 +7,7 @@ import com.seb.gaiacore.sounds.ModSounds;
 import com.seb.gaiacore.util.ModCreativeModsTabs;
 import com.seb.gaiacore.items.ModItems;
 import com.seb.gaiacore.util.ModItemProperties;
+import com.seb.gaiacore.worldgen.ModFeatures;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -43,6 +44,7 @@ public class GaiaCore
         ModBlocks.register(modEventBus);
         ModDataComponentTypes.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModFeatures.FEATURES.register(modEventBus);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
