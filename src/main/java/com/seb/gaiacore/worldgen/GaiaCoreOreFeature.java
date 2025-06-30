@@ -1,6 +1,7 @@
 package com.seb.gaiacore.worldgen;
 
 import com.mojang.serialization.Codec;
+import com.seb.gaiacore.blocks.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
@@ -42,7 +43,7 @@ public class GaiaCoreOreFeature extends Feature<OreConfiguration> {
     }
 
     private void onOrePlaced(WorldGenLevel level, BlockPos pos, BlockState state) {
-        int radius = 10;
+        int radius = 5;
         int radiusSq = radius * radius;
 
         BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
@@ -62,6 +63,10 @@ public class GaiaCoreOreFeature extends Feature<OreConfiguration> {
             }
         }
 
-        System.out.println("Carved sphere of air around: " + pos);
+        if (state.is(ModBlocks.VOLCANIC_GAIA_CORE.get())) {
+            System.out.println("Volcanic Gaia Core placed at: " + pos);
+        } else if (state.is(ModBlocks.ENERGETIC_GAIA_CORE.get())) {
+            System.out.println("Energetic Gaia Core placed at: " + pos);
+        }
     }
 }

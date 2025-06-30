@@ -22,11 +22,11 @@ public class ModPlacedFeatures {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, ENERGETIC_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.ENERGETIC_GAIA_CORE_KEY),
-                ModOrePlacement.commonOrePlacement(1,
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
+                ModOrePlacement.rareOrePlacement(2, HeightRangePlacement.uniform(
+                        VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
         register(context, VOLCANIC_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.VOLCANIC_GAIA_CORE_KEY),
-                ModOrePlacement.commonOrePlacement(1,
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
+                ModOrePlacement.rareOrePlacement(2, HeightRangePlacement.uniform(
+                        VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {
