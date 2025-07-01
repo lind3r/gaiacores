@@ -1,8 +1,8 @@
 package com.seb.gaiacore.datagen;
 
 import com.seb.gaiacore.GaiaCore;
-import com.seb.gaiacore.blocks.ModBlocks;
-import com.seb.gaiacore.blocks.custom.GaiaCoreBase;
+import com.seb.gaiacore.block.ModBlocks;
+import com.seb.gaiacore.block.custom.GaiaCoreBase;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;

@@ -1,17 +1,17 @@
 package com.seb.gaiacore;
 
 import com.mojang.logging.LogUtils;
-import com.seb.gaiacore.blocks.ModBlocks;
-import com.seb.gaiacore.blocks.entity.ModBlockEntities;
+import com.seb.gaiacore.block.ModBlocks;
+import com.seb.gaiacore.block.entity.ModBlockEntities;
 import com.seb.gaiacore.component.ModDataComponentTypes;
 import com.seb.gaiacore.screen.ModMenuTypes;
+import com.seb.gaiacore.screen.custom.EnergeticGaiaCoreScreen;
 import com.seb.gaiacore.screen.custom.GaiaCoreAnalyzerScreen;
-import com.seb.gaiacore.sounds.ModSounds;
+import com.seb.gaiacore.sound.ModSounds;
 import com.seb.gaiacore.util.ModCreativeModsTabs;
-import com.seb.gaiacore.items.ModItems;
+import com.seb.gaiacore.item.ModItems;
 import com.seb.gaiacore.util.ModItemProperties;
 import com.seb.gaiacore.worldgen.ModFeatures;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -24,6 +24,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+
+import java.awt.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(GaiaCore.MOD_ID)
@@ -79,6 +81,7 @@ public class GaiaCore
             ModItemProperties.addCustomItemProperties();
 
             MenuScreens.register(ModMenuTypes.GAIA_CORE_ANALYZER_MENU.get(), GaiaCoreAnalyzerScreen::new);
+            MenuScreens.register(ModMenuTypes.ENERGETIC_GAIA_CORE_MENU.get(), EnergeticGaiaCoreScreen::new);
         }
     }
 }

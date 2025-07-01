@@ -1,8 +1,8 @@
 package com.seb.gaiacore.util;
 
 import com.seb.gaiacore.GaiaCore;
-import com.seb.gaiacore.blocks.ModBlocks;
-import com.seb.gaiacore.items.ModItems;
+import com.seb.gaiacore.block.ModBlocks;
+import com.seb.gaiacore.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

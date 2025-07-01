@@ -1,4 +1,4 @@
-package com.seb.gaiacore.sounds;
+package com.seb.gaiacore.sound;
 
 import com.seb.gaiacore.GaiaCore;
 import net.minecraft.resources.ResourceLocation;

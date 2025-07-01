@@ -1,22 +1,18 @@
 package com.seb.gaiacore.worldgen;
 
 import com.seb.gaiacore.GaiaCore;
-import com.seb.gaiacore.blocks.ModBlocks;
+import com.seb.gaiacore.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
-
-import java.util.List;
 
 // Configured Features (CF) is kind of the composition of your stuff, e.g 3-5 iron ore in this random pattern
 // Placed Features is how many, at what Y level and so on

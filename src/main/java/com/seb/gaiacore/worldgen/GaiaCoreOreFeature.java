@@ -1,7 +1,7 @@
 package com.seb.gaiacore.worldgen;
 
 import com.mojang.serialization.Codec;
-import com.seb.gaiacore.blocks.ModBlocks;
+import com.seb.gaiacore.block.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
@@ -61,12 +61,6 @@ public class GaiaCoreOreFeature extends Feature<OreConfiguration> {
                     }
                 }
             }
-        }
-
-        if (state.is(ModBlocks.VOLCANIC_GAIA_CORE.get())) {
-            System.out.println("Volcanic Gaia Core placed at: " + pos);
-        } else if (state.is(ModBlocks.ENERGETIC_GAIA_CORE.get())) {
-            System.out.println("Energetic Gaia Core placed at: " + pos);
         }
     }
 }

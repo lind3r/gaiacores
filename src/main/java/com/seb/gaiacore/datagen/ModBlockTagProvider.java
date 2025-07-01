@@ -1,7 +1,7 @@
 package com.seb.gaiacore.datagen;
 
 import com.seb.gaiacore.GaiaCore;
-import com.seb.gaiacore.blocks.ModBlocks;
+import com.seb.gaiacore.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;

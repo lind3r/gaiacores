@@ -1,7 +1,7 @@
 package com.seb.gaiacore.datagen;
 
 import com.seb.gaiacore.GaiaCore;
-import com.seb.gaiacore.items.ModItems;
+import com.seb.gaiacore.item.ModItems;
 import com.seb.gaiacore.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

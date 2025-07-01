@@ -1,4 +1,4 @@
-package com.seb.gaiacore.items;
+package com.seb.gaiacore.item;
 
 import net.minecraft.world.food.FoodProperties;
 

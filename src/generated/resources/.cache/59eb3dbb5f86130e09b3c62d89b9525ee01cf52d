@@ -1,2 +1,4 @@
-// 1.21.1	2025-06-30T16:44:02.9419135	Loot Tables
+// 1.21.1	2025-07-01T22:52:25.8861776	Loot Tables
+b02c2801aadddc37999bed6d030ae021b318341b data/gaiacore/loot_table/blocks/energetic_gaia_core.json
 006ebfd2fd0ee346cc45381ecba8eabe33e34192 data/gaiacore/loot_table/blocks/gaia_core_analyzer.json
+3b5672c071cb597a436462d9979118c4f7d23c36 data/gaiacore/loot_table/blocks/volcanic_gaia_core.json

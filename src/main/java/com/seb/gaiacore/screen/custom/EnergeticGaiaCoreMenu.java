@@ -1,36 +1,38 @@
 package com.seb.gaiacore.screen.custom;
 
 import com.seb.gaiacore.block.ModBlocks;
-import com.seb.gaiacore.block.entity.custom.GaiaCoreAnalyzerBlockEntity;
+import com.seb.gaiacore.block.entity.custom.EnergeticGaiaCoreBlockEntity;
 import com.seb.gaiacore.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class GaiaCoreAnalyzerMenu extends AbstractContainerMenu {
-    public final GaiaCoreAnalyzerBlockEntity blockEntity;
+public class EnergeticGaiaCoreMenu extends AbstractContainerMenu {
+    public final EnergeticGaiaCoreBlockEntity blockEntity;
     private final Level level;
+    private final ContainerData data;
 
-    public GaiaCoreAnalyzerMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
+    public EnergeticGaiaCoreMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public GaiaCoreAnalyzerMenu(int pContainerId, Inventory inv, BlockEntity blockEntity) {
-        super(ModMenuTypes.GAIA_CORE_ANALYZER_MENU.get(), pContainerId);
-        this.blockEntity = ((GaiaCoreAnalyzerBlockEntity) blockEntity);
+    public EnergeticGaiaCoreMenu(int pContainerId, Inventory inv, BlockEntity blockEntity, ContainerData data) {
+        super(ModMenuTypes.ENERGETIC_GAIA_CORE_MENU.get(), pContainerId);
+        this.blockEntity = ((EnergeticGaiaCoreBlockEntity) blockEntity);
         this.level = inv.player.level();
+        this.data = data;
 
-        this.addSlot(new SlotItemHandler(this.blockEntity.inventory, 0, 18, 35));
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 0, 54, 34));
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
+
+        addDataSlots(data);
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -86,7 +88,20 @@ public class GaiaCoreAnalyzerMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                pPlayer, ModBlocks.GAIA_CORE_ANALYZER.get());
+                pPlayer, ModBlocks.ENERGETIC_GAIA_CORE.get());
+    }
+
+    public boolean isProgressing() {
+        return this.data.get(0) > 0;
+    }
+
+    public int getScaledProgress() {
+        int progress = this.data.get(0);
+        int maxProgress = this.data.get(1);
+        if (maxProgress == 0) {
+            maxProgress = 1; // Prevent division by zero
+        }
+        return (int) ((float) progress / maxProgress * 24); // Scale to 24 pixels
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
@@ -101,9 +116,5 @@ public class GaiaCoreAnalyzerMenu extends AbstractContainerMenu {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
-    }
-
-    public GaiaCoreAnalyzerBlockEntity getBlockEntity() {
-        return blockEntity;
     }
 }

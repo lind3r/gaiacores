@@ -1,7 +1,7 @@
 package com.seb.gaiacore.datagen;
 
 import com.seb.gaiacore.GaiaCore;
-import com.seb.gaiacore.items.ModItems;
+import com.seb.gaiacore.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;

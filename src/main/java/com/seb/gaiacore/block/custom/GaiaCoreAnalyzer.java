@@ -1,7 +1,7 @@
-package com.seb.gaiacore.blocks.custom;
+package com.seb.gaiacore.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import com.seb.gaiacore.blocks.entity.custom.GaiaCoreAnalyzerBlockEntity;
+import com.seb.gaiacore.block.entity.custom.GaiaCoreAnalyzerBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -17,11 +17,11 @@ import org.jetbrains.annotations.Nullable;
 
 public class GaiaCoreAnalyzer extends BaseEntityBlock {
 
+    public static final MapCodec<GaiaCoreAnalyzer> CODEC = simpleCodec(GaiaCoreAnalyzer::new);
+
     public GaiaCoreAnalyzer(Properties pProperties) {
         super(pProperties);
     }
-
-    public static final MapCodec<GaiaCoreAnalyzer> CODEC = simpleCodec(GaiaCoreAnalyzer::new);
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {

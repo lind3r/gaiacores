@@ -1,29 +1,29 @@
-[01Jul2025 18:40:07.416] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 17, --assetsDir, C:\Users\lind3\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, gaiacore, --all, --output, C:\Users\lind3\clones\modding\gaiacore\src\generated\resources, --existing, C:\Users\lind3\clones\modding\gaiacore\src\main\resources]
-[01Jul2025 18:40:07.419] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.7+6-LTS
-[01Jul2025 18:40:07.420] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.2.4 starting: java version 21.0.7 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
-[01Jul2025 18:40:07.514] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
-[01Jul2025 18:40:07.607] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=jar:file:///C:/Users/lind3/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.7/8ab114ac385e6dbdad5efafe28aba4df8120915f/mixin-0.8.7.jar!/ Service=ModLauncher Env=UNKNOWN
-[01Jul2025 18:40:08.561] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[01Jul2025 18:40:09.420] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\lind3\.gradle\caches\forge_gradle\assets, --assetIndex, 17, --mod, gaiacore, --all, --output, C:\Users\lind3\clones\modding\gaiacore\src\generated\resources, --existing, C:\Users\lind3\clones\modding\gaiacore\src\main\resources]
-[01Jul2025 18:40:14.906] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 52.1.0, for MC 1.21.1 with MCP 20240808.132146
-[01Jul2025 18:40:14.906] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v52.1.0 Initialized
-[01Jul2025 18:40:14.945] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
-[01Jul2025 18:40:15.272] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [gaiacore]
-[01Jul2025 18:40:15.358] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/lind3/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.1-52.1.0_mapped_parchment_2024.11.17-1.21.1/forge-1.21.1-52.1.0_mapped_parchment_2024.11.17-1.21.1-recomp.jar%230!/assets/.mcassetsroot' uses unexpected schema
-[01Jul2025 18:40:15.359] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/lind3/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.1-52.1.0_mapped_parchment_2024.11.17-1.21.1/forge-1.21.1-52.1.0_mapped_parchment_2024.11.17-1.21.1-recomp.jar%230!/data/.mcassetsroot' uses unexpected schema
-[01Jul2025 18:40:15.592] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
-[01Jul2025 18:40:15.721] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 129 ms
-[01Jul2025 18:40:15.721] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[01Jul2025 18:40:15.759] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 37 ms
-[01Jul2025 18:40:15.759] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id gaiacore
-[01Jul2025 18:40:15.782] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id gaiacore finished after 22 ms
-[01Jul2025 18:40:15.782] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id gaiacore
-[01Jul2025 18:40:15.786] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id gaiacore finished after 3 ms
-[01Jul2025 18:40:15.786] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: gaiacore
-[01Jul2025 18:40:15.817] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: gaiacore finished after 30 ms
-[01Jul2025 18:40:15.817] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: gaiacore
-[01Jul2025 18:40:15.978] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: gaiacore finished after 160 ms
-[01Jul2025 18:40:15.978] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
-[01Jul2025 18:40:15.982] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 3 ms
-[01Jul2025 18:40:15.982] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 390 ms
-[01Jul2025 18:40:15.985] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 26, old count: 26, new count: 27, removed stale: 0, written: 0
+[02Jul2025 00:07:50.270] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 17, --assetsDir, C:\Users\lind3\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, gaiacore, --all, --output, C:\Users\lind3\clones\modding\gaiacore\src\generated\resources, --existing, C:\Users\lind3\clones\modding\gaiacore\src\main\resources]
+[02Jul2025 00:07:50.284] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.7+6-LTS
+[02Jul2025 00:07:50.285] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.2.4 starting: java version 21.0.7 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[02Jul2025 00:07:50.401] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
+[02Jul2025 00:07:50.497] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=jar:file:///C:/Users/lind3/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.7/8ab114ac385e6dbdad5efafe28aba4df8120915f/mixin-0.8.7.jar!/ Service=ModLauncher Env=UNKNOWN
+[02Jul2025 00:07:51.454] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[02Jul2025 00:07:52.470] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\lind3\.gradle\caches\forge_gradle\assets, --assetIndex, 17, --mod, gaiacore, --all, --output, C:\Users\lind3\clones\modding\gaiacore\src\generated\resources, --existing, C:\Users\lind3\clones\modding\gaiacore\src\main\resources]
+[02Jul2025 00:07:57.874] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 52.1.0, for MC 1.21.1 with MCP 20240808.132146
+[02Jul2025 00:07:57.874] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v52.1.0 Initialized
+[02Jul2025 00:07:57.908] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
+[02Jul2025 00:07:58.223] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [gaiacore]
+[02Jul2025 00:07:58.306] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/lind3/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.1-52.1.0_mapped_parchment_2024.11.17-1.21.1/forge-1.21.1-52.1.0_mapped_parchment_2024.11.17-1.21.1-recomp.jar%230!/assets/.mcassetsroot' uses unexpected schema
+[02Jul2025 00:07:58.307] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/lind3/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.1-52.1.0_mapped_parchment_2024.11.17-1.21.1/forge-1.21.1-52.1.0_mapped_parchment_2024.11.17-1.21.1-recomp.jar%230!/data/.mcassetsroot' uses unexpected schema
+[02Jul2025 00:07:58.517] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[02Jul2025 00:07:58.650] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 132 ms
+[02Jul2025 00:07:58.650] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[02Jul2025 00:07:58.677] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 26 ms
+[02Jul2025 00:07:58.677] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id gaiacore
+[02Jul2025 00:07:58.695] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id gaiacore finished after 17 ms
+[02Jul2025 00:07:58.695] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id gaiacore
+[02Jul2025 00:07:58.699] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id gaiacore finished after 3 ms
+[02Jul2025 00:07:58.699] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: gaiacore
+[02Jul2025 00:07:58.722] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: gaiacore finished after 23 ms
+[02Jul2025 00:07:58.722] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: gaiacore
+[02Jul2025 00:07:58.883] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: gaiacore finished after 160 ms
+[02Jul2025 00:07:58.883] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[02Jul2025 00:07:58.886] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 2 ms
+[02Jul2025 00:07:58.886] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 369 ms
+[02Jul2025 00:07:58.889] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 30, old count: 30, new count: 31, removed stale: 0, written: 0

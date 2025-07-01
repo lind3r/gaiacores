@@ -1,6 +1,6 @@
 package com.seb.gaiacore.datagen;
 
-import com.seb.gaiacore.blocks.ModBlocks;
+import com.seb.gaiacore.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -17,6 +17,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.GAIA_CORE_ANALYZER.get());
+        dropSelf(ModBlocks.ENERGETIC_GAIA_CORE.get());
+        dropSelf(ModBlocks.VOLCANIC_GAIA_CORE.get());
 
 //        dropSelf(ModBlocks.COFFEE_BLOCK.get());
 //        dropSelf(ModBlocks.RAW_COFFEE_BLOCK.get());

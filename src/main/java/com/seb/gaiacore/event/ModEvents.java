@@ -12,8 +12,8 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent event) {
-        if (event.getSource().getDirectEntity() instanceof Player player) {
-            player.sendSystemMessage(Component.literal(player.getName().getString() + " hehe"));
-        }
+//        if (event.getSource().getDirectEntity() instanceof Player player) {
+//            player.sendSystemMessage(Component.literal(player.getName().getString() + " hehe"));
+//        }
     }
 }

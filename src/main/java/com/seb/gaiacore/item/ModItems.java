@@ -1,7 +1,7 @@
-package com.seb.gaiacore.items;
+package com.seb.gaiacore.item;
 
 import com.seb.gaiacore.GaiaCore;
-import com.seb.gaiacore.items.custom.GaiaScannerItem;
+import com.seb.gaiacore.item.custom.GaiaScannerItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

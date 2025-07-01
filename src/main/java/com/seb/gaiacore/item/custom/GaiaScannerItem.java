@@ -1,4 +1,4 @@
-package com.seb.gaiacore.items.custom;
+package com.seb.gaiacore.item.custom;
 
 import com.seb.gaiacore.component.ModDataComponentTypes;
 import net.minecraft.ChatFormatting;

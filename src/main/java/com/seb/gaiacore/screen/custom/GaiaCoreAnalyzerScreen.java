@@ -35,17 +35,21 @@ public class GaiaCoreAnalyzerScreen extends AbstractContainerScreen<GaiaCoreAnal
         pGuiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
         float textScale = 0.6f;
-        ItemStack storedItem = menu.getBlockEntity().getStoredItem();
-        String analyzedBlockTranslationKey = "";
-        if (storedItem != null && storedItem.get(ModDataComponentTypes.BLOCK_TRANSLATION_KEY.get()) != null) {
-            analyzedBlockTranslationKey = (String) storedItem.get(ModDataComponentTypes.BLOCK_TRANSLATION_KEY.get());
-        }
 
-        String translationKey = switch (analyzedBlockTranslationKey) {
-            case "block.gaiacore.energetic_gaia_core" -> "block.gaiacore.energetic_gaia_core_analyze_text";
-            case "block.gaiacore.volcanic_gaia_core" -> "block.gaiacore.volcanic_gaia_core_analyze_text";
-            default -> "block.gaiacore.gaia_core_scanner_invalid_block";
-        };
+        ItemStack storedItem = menu.getBlockEntity().getStoredItem();
+        String translationKey;
+        if (storedItem == null || storedItem.isEmpty()) {
+            translationKey = "block.gaiacore.gaia_core_scanner_insert_item";
+        } else if (storedItem.has(ModDataComponentTypes.BLOCK_TRANSLATION_KEY.get())) {
+            String analyzedBlockTranslationKey = (String) storedItem.get(ModDataComponentTypes.BLOCK_TRANSLATION_KEY.get());
+            translationKey = switch (analyzedBlockTranslationKey) {
+                case "block.gaiacore.energetic_gaia_core" -> "block.gaiacore.energetic_gaia_core_analyze_text";
+                case "block.gaiacore.volcanic_gaia_core" -> "block.gaiacore.volcanic_gaia_core_analyze_text";
+                default -> "block.gaiacore.gaia_core_scanner_invalid_block_scanned";
+            };
+        } else {
+            translationKey = "block.gaiacore.gaia_core_scanner_invalid_block_scanned";
+        }
         Component textComponent = Component.translatable(translationKey);
 
         pGuiGraphics.pose().pushPose();

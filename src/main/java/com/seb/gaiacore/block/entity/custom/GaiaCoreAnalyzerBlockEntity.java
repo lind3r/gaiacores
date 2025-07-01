@@ -1,6 +1,6 @@
-package com.seb.gaiacore.blocks.entity.custom;
+package com.seb.gaiacore.block.entity.custom;
 
-import com.seb.gaiacore.blocks.entity.ModBlockEntities;
+import com.seb.gaiacore.block.entity.ModBlockEntities;
 import com.seb.gaiacore.screen.custom.GaiaCoreAnalyzerMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -85,7 +85,7 @@ public class GaiaCoreAnalyzerBlockEntity extends BlockEntity implements MenuProv
 
     @Override
     public Component getDisplayName() {
-        return Component.literal("Gaia Core Analyzer");
+        return Component.translatable("block.gaiacore.gaia_core_analyzer");
     }
 
     @Override
