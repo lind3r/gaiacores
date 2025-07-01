@@ -2,13 +2,17 @@ package com.seb.gaiacore;
 
 import com.mojang.logging.LogUtils;
 import com.seb.gaiacore.blocks.ModBlocks;
+import com.seb.gaiacore.blocks.entity.ModBlockEntities;
 import com.seb.gaiacore.component.ModDataComponentTypes;
+import com.seb.gaiacore.screen.ModMenuTypes;
+import com.seb.gaiacore.screen.custom.GaiaCoreAnalyzerScreen;
 import com.seb.gaiacore.sounds.ModSounds;
 import com.seb.gaiacore.util.ModCreativeModsTabs;
 import com.seb.gaiacore.items.ModItems;
 import com.seb.gaiacore.util.ModItemProperties;
 import com.seb.gaiacore.worldgen.ModFeatures;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -45,6 +49,8 @@ public class GaiaCore
         ModDataComponentTypes.register(modEventBus);
         ModSounds.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -71,6 +77,8 @@ public class GaiaCore
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             ModItemProperties.addCustomItemProperties();
+
+            MenuScreens.register(ModMenuTypes.GAIA_CORE_ANALYZER_MENU.get(), GaiaCoreAnalyzerScreen::new);
         }
     }
 }

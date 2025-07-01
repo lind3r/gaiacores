@@ -29,8 +29,7 @@ public class GaiaScannerItem extends Item {
         BlockState clickedState = context.getLevel().getBlockState(context.getClickedPos());
         Block clickedBlock = clickedState.getBlock();
 
-        // Save block name into item's custom component
-        context.getItemInHand().set(ModDataComponentTypes.BLOCK_NAME.get(), clickedBlock.getName());
+        context.getItemInHand().set(ModDataComponentTypes.BLOCK_TRANSLATION_KEY.get(), clickedBlock.getDescriptionId()); // This is the translation key
 
         player.displayClientMessage(Component.literal("Saved block information: " + clickedBlock.getName().getString()), true);
         return InteractionResult.SUCCESS;
@@ -44,12 +43,11 @@ public class GaiaScannerItem extends Item {
             pTooltipComponents.add(Component.translatable("tooltip.gaiacore.hold_shift"));
         }
 
-        Component clickedBlockName = pStack.get(ModDataComponentTypes.BLOCK_NAME.get());
-        if (clickedBlockName != null) {
-            Component styled = ComponentUtils.wrapInSquareBrackets(clickedBlockName.copy())
+        String translationKey = pStack.get(ModDataComponentTypes.BLOCK_TRANSLATION_KEY.get());
+        if (translationKey != null && !translationKey.isEmpty()) {
+            Component styled = ComponentUtils.wrapInSquareBrackets(Component.translatable(translationKey))
                     .withStyle(ChatFormatting.AQUA);
             pTooltipComponents.add(Component.literal("Saved block information: ").append(styled));
-
         }
 
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);

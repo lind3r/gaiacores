@@ -21,8 +21,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
 //        blockWithItem(ModBlocks.ENERGETIC_GAIA_CORE);
 
-        gaiaCore(ModBlocks.ENERGETIC_GAIA_CORE, GaiaCoreBase.Variant.ENERGETIC);
-        gaiaCore(ModBlocks.VOLCANIC_GAIA_CORE, GaiaCoreBase.Variant.VOLCANIC);
+        gaiaCore(ModBlocks.ENERGETIC_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.ENERGETIC);
+        gaiaCore(ModBlocks.VOLCANIC_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.VOLCANIC);
+
+        blockWithItem(ModBlocks.GAIA_CORE_ANALYZER);
 
 //        stairsBlock(ModBlocks.ALEXANDRITE_STAIRS.get(), blockTexture(ModBlocks.ALEXANDRITE.get()));
 //        slabBlock(ModBlocks.ALEXANDRITE_SLAB.get(), blockTexture(ModBlocks.ALEXANDRITE.get()), blockTexture(ModBlocks.ALEXANDRITE.get()));
@@ -44,9 +46,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 //        blockItem(ModBlocks.ALEXANDRITE_TRAPDOOR, "_bottom");
     }
 
-    private void gaiaCore(RegistryObject<Block> block, GaiaCoreBase.Variant variant) {
-        String name_powered = variant.toString().toLowerCase() + "_gaia_core_" + "powered";
-        String name_unpowered = variant.toString().toLowerCase() + "_gaia_core_" + "unpowered";
+    private void gaiaCore(RegistryObject<Block> block, GaiaCoreBase.GaiaCoreVariant gaiaCoreVariant) {
+        String name_powered = gaiaCoreVariant.toString().toLowerCase() + "_gaia_core_" + "powered";
+        String name_unpowered = gaiaCoreVariant.toString().toLowerCase() + "_gaia_core_" + "unpowered";
 
         getVariantBuilder(block.get()).forAllStates(state -> {
             if(state.getValue(GaiaCoreBase.POWERED)) {

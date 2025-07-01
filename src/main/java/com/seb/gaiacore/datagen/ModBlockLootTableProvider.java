@@ -16,7 +16,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        //dropSelf(ModBlocks.ENERGETIC_GAIA_CORE.get()); // see ModBlocks class
+        dropSelf(ModBlocks.GAIA_CORE_ANALYZER.get());
 
 //        dropSelf(ModBlocks.COFFEE_BLOCK.get());
 //        dropSelf(ModBlocks.RAW_COFFEE_BLOCK.get());

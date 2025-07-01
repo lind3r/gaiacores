@@ -1,15 +1,18 @@
 {
   "item.gaiacore.coffee": "Coffee",
-  "item.gaiacore.gaia_scanner": "Gaia Scanner",
+  "item.gaiacore.gaia_scanner": "§3Gaia Scanner§r",
 
-  "block.gaiacore.energetic_gaia_core": "Energetic Gaia Core",
-  "block.gaiacore.volcanic_gaia_core": "Volcanic Gaia Core",
+  "block.gaiacore.gaia_core_analyzer": "§5Gaia Core Analyzer§r",
+  "block.gaiacore.energetic_gaia_core": "§eEnergetic Gaia Core§r",
+  "block.gaiacore.volcanic_gaia_core": "§cVolcanic Gaia Core§r",
+
+  "block.gaiacore.energetic_gaia_core_analyze_text": "§eEnergetic§r §5Gaia Cores§r will spawn basic ores on each non-occupied side when powered. In order to make the block mineable, it has to be weakened by an explosive event nearby.",
+  "block.gaiacore.volcanic_gaia_core_analyze_text": "§cVolcanic§r §5Gaia Cores§r will spawn lava on the non-occupied side when all but one side is covered in Molten Signalum. In order to make the block mineable, it has to be cooled down with ice.",
+  "block.gaiacore.gaia_core_scanner_insert_block": "Insert a §3Gaia Scanner§r with a scanned §5Gaia Core§r in the slot to the left.",
+  "block.gaiacore.gaia_core_scanner_invalid_block": "Scanned block is not a valid §5Gaia Core§r",
 
   "tooltip.gaiacore.hold_shift": "Hold §eShift§r for more information",
-  "tooltip.gaiacore.gaia_scanner": "The §5Gaia Scanner§r scans for §5Gaia Cores§r when held. It will beep at a rate that increases the closer you are to a core. Shift-right-clicking a §5Gaia Core§r with the scanner will store information about that core which can be analyzed in a §lGaia Core Analyzer§r",
-  "tooltip.gaiacore.gaia_core": "§5Gaia Cores§r can be found around the world and generates different resources depending on the type of core, assuming that the correct fuel and/or conditions are provided.",
-  "tooltip.gaiacore.energetic_gaia_core": "§9Energetic§r §5Gaia Cores§r will spawn basic ores on each non-occupied side when powered",
-  "tooltip.gaiacore.volcanic_gaia_core": "When all but one side is covered in Molten Signalum, §cVolcanic§r §5Gaia Cores§r will spawn lava on the non-occupied side",
+  "tooltip.gaiacore.gaia_scanner": "Right-clicking a §5Gaia Core§r with the scanner will store information about that core which can be analyzed in a §lGaia Core Analyzer§r",
 
   "creativetab.gaiacore.items": "Gaiacore Items",
   "creativetab.gaiacore.blocks": "Gaiacore Blocks"

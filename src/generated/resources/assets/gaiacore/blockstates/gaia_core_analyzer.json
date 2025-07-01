@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gaiacore:block/gaia_core_analyzer"
+    }
+  }
+}

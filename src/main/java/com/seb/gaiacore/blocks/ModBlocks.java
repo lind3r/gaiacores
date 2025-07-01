@@ -2,6 +2,7 @@ package com.seb.gaiacore.blocks;
 
 import com.seb.gaiacore.GaiaCore;
 import com.seb.gaiacore.blocks.custom.EnergeticGaiaCore;
+import com.seb.gaiacore.blocks.custom.GaiaCoreAnalyzer;
 import com.seb.gaiacore.blocks.custom.GaiaCoreBase;
 import com.seb.gaiacore.blocks.custom.VolcanicGaiaCore;
 import com.seb.gaiacore.items.ModItems;
@@ -32,6 +33,9 @@ public class ModBlocks {
                     .strength(-1.0f, 3600000.0f)
                     .lightLevel(state -> state.getValue(GaiaCoreBase.POWERED) ? 15 : 0)
                     .noLootTable()));
+
+    public static final RegistryObject<Block> GAIA_CORE_ANALYZER = registerBlock("gaia_core_analyzer",
+            () -> new GaiaCoreAnalyzer(BlockBehaviour.Properties.of().noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockSupp) {
         RegistryObject<T> block = BLOCKS.register(name, blockSupp);

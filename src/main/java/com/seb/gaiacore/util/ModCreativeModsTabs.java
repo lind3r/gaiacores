@@ -32,6 +32,7 @@ public class ModCreativeModsTabs {
                 .displayItems((itemDisplayParameters, output) -> {
                     output.accept(ModBlocks.ENERGETIC_GAIA_CORE.get());
                     output.accept(ModBlocks.VOLCANIC_GAIA_CORE.get());
+                    output.accept(ModBlocks.GAIA_CORE_ANALYZER.get());
                 }).build());
 
     public static void register(IEventBus eventBus) {
