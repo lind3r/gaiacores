@@ -1,7 +1,7 @@
 package com.seb.gaiacore.screen.custom;
 
 import com.seb.gaiacore.block.ModBlocks;
-import com.seb.gaiacore.block.entity.custom.EnergeticGaiaCoreBlockEntity;
+import com.seb.gaiacore.block.entity.custom.VolcanicGaiaCoreBlockEntity;
 import com.seb.gaiacore.screen.ModMenuTypes;
 import com.seb.gaiacore.util.ModMenuHelper;
 import net.minecraft.network.FriendlyByteBuf;
@@ -12,13 +12,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class EnergeticGaiaCoreMenu extends GaiaCoreBaseMenu<EnergeticGaiaCoreBlockEntity> {
-    public EnergeticGaiaCoreMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
+public class VolcanicGaiaCoreMenu extends GaiaCoreBaseMenu<VolcanicGaiaCoreBlockEntity> {
+    public VolcanicGaiaCoreMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new net.minecraft.world.inventory.SimpleContainerData(2));
     }
 
-    public EnergeticGaiaCoreMenu(int pContainerId, Inventory inv, BlockEntity blockEntity, ContainerData data) {
-        super(ModMenuTypes.ENERGETIC_GAIA_CORE_MENU.get(), pContainerId, inv, (EnergeticGaiaCoreBlockEntity) blockEntity, data);
+    public VolcanicGaiaCoreMenu(int pContainerId, Inventory inv, BlockEntity blockEntity, ContainerData data) {
+        super(ModMenuTypes.VOLCANIC_GAIA_CORE_MENU.get(), pContainerId, inv, (VolcanicGaiaCoreBlockEntity) blockEntity, data);
         this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 0, 54, 34));
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
@@ -27,7 +27,7 @@ public class EnergeticGaiaCoreMenu extends GaiaCoreBaseMenu<EnergeticGaiaCoreBlo
 
     @Override
     public boolean stillValid(Player pPlayer) {
-        return stillValid(pPlayer, ModBlocks.ENERGETIC_GAIA_CORE.get());
+        return stillValid(pPlayer, ModBlocks.VOLCANIC_GAIA_CORE.get());
     }
 
     @Override

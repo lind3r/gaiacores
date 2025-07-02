@@ -5,11 +5,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class EnergeticGaiaCoreScreen extends GaiaCoreBaseScreen<EnergeticGaiaCoreMenu> {
+public class VolcanicGaiaCoreScreen extends GaiaCoreBaseScreen<VolcanicGaiaCoreMenu> {
     private static final ResourceLocation GUI_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "textures/gui/energetic_gaia_core/energetic_gaia_core_gui.png");
+            ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "textures/gui/volcanic_gaia_core/volcanic_gaia_core_gui.png");
 
-    public EnergeticGaiaCoreScreen(EnergeticGaiaCoreMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
+
+    public VolcanicGaiaCoreScreen(VolcanicGaiaCoreMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle, GUI_TEXTURE, ARROW_TEXTURE);
     }
 }

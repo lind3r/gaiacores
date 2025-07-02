@@ -4,6 +4,7 @@ import com.seb.gaiacore.GaiaCore;
 import com.seb.gaiacore.block.ModBlocks;
 import com.seb.gaiacore.block.entity.custom.EnergeticGaiaCoreBlockEntity;
 import com.seb.gaiacore.block.entity.custom.GaiaCoreAnalyzerBlockEntity;
+import com.seb.gaiacore.block.entity.custom.VolcanicGaiaCoreBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -21,6 +22,10 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<EnergeticGaiaCoreBlockEntity>> ENERGETIC_GAIA_CORE_BE =
             BLOCK_ENTITIES.register("energetic_gaia_core_be", () -> BlockEntityType.Builder.of(
                     EnergeticGaiaCoreBlockEntity::new, ModBlocks.ENERGETIC_GAIA_CORE.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<VolcanicGaiaCoreBlockEntity>> VOLCANIC_GAIA_CORE_BE =
+            BLOCK_ENTITIES.register("volcanic_gaia_core_be", () -> BlockEntityType.Builder.of(
+                    VolcanicGaiaCoreBlockEntity::new, ModBlocks.VOLCANIC_GAIA_CORE.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
