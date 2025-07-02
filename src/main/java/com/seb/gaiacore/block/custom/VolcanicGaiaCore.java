@@ -8,20 +8,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 public class VolcanicGaiaCore extends GaiaCoreBase {
-    GaiaCoreVariant gaiaCoreVariant;
 
     public VolcanicGaiaCore(Properties properties) {
-        super(properties);
-        this.gaiaCoreVariant = GaiaCoreVariant.VOLCANIC;
+        super(properties, GaiaCoreVariant.VOLCANIC);
     }
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
         return null;
-    }
-
-    public GaiaCoreVariant getGaiaCoreVariant() {
-        return gaiaCoreVariant;
     }
 
     @Override
