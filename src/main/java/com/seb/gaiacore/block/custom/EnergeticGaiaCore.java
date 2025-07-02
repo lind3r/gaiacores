@@ -13,12 +13,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 public class EnergeticGaiaCore extends GaiaCoreBase {
-    public static final MapCodec<EnergeticGaiaCore> CODEC = simpleCodec(EnergeticGaiaCore::new);
-
     public EnergeticGaiaCore(Properties properties) {
         super(properties, GaiaCoreVariant.ENERGETIC);
     }
 
+    public static final MapCodec<EnergeticGaiaCore> CODEC = simpleCodec(EnergeticGaiaCore::new);
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
         return CODEC;
@@ -35,7 +34,7 @@ public class EnergeticGaiaCore extends GaiaCoreBase {
             return null;
         }
         return createTickerHelper(pBlockEntityType, ModBlockEntities.ENERGETIC_GAIA_CORE_BE.get(),
-                (level, blockPos, blockState, energeticGaiaCoreBlockEntity)
-                        -> energeticGaiaCoreBlockEntity.tick(level, blockPos, blockState));
+                (level, blockPos, blockState, be)
+                        -> be.tick(level, blockPos, blockState));
     }
 }

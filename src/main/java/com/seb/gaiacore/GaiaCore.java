@@ -7,6 +7,7 @@ import com.seb.gaiacore.component.ModDataComponentTypes;
 import com.seb.gaiacore.screen.ModMenuTypes;
 import com.seb.gaiacore.screen.custom.EnergeticGaiaCoreScreen;
 import com.seb.gaiacore.screen.custom.GaiaCoreAnalyzerScreen;
+import com.seb.gaiacore.screen.custom.VolcanicGaiaCoreScreen;
 import com.seb.gaiacore.sound.ModSounds;
 import com.seb.gaiacore.util.ModCreativeModsTabs;
 import com.seb.gaiacore.item.ModItems;
@@ -82,6 +83,7 @@ public class GaiaCore
 
             MenuScreens.register(ModMenuTypes.GAIA_CORE_ANALYZER_MENU.get(), GaiaCoreAnalyzerScreen::new);
             MenuScreens.register(ModMenuTypes.ENERGETIC_GAIA_CORE_MENU.get(), EnergeticGaiaCoreScreen::new);
+            MenuScreens.register(ModMenuTypes.VOLCANIC_GAIA_CORE_MENU.get(), VolcanicGaiaCoreScreen::new);
         }
     }
 }

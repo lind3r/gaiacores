@@ -4,6 +4,8 @@ import com.seb.gaiacore.block.entity.ModBlockEntities;
 import com.seb.gaiacore.screen.custom.EnergeticGaiaCoreMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -21,24 +23,12 @@ public class EnergeticGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     }
 
     @Override
-    public void tick(Level level, BlockPos blockPos, BlockState blockState) {
-        if (conditionsMet(blockState)) {
-            progress++;
-            setChanged(level, blockPos, blockState);
-            if (progress >= maxProgress) {
-                spawnLowTierOres(level);
-                resetProgress();
-            }
-        } else {
-            resetProgress();
-        }
+    protected void checkForDormantBreaker() {
+
     }
 
     @Override
-    protected boolean conditionsMet(BlockState blockState) {
-        if (!blockState.getValue(com.seb.gaiacore.block.custom.GaiaCoreBase.POWERED)) {
-            return false;
-        }
+    protected boolean customConditionsMet(BlockState blockState) {
         // At least one adjacent block must be air
         for (Direction dir : Direction.values()) {
             BlockPos adjacentPos = worldPosition.relative(dir);
@@ -48,6 +38,16 @@ public class EnergeticGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
             }
         }
         return false;
+    }
+
+    @Override
+    protected void onProgressComplete(Level level, BlockPos blockPos, BlockState blockState) {
+        spawnLowTierOres(level);
+    }
+
+    @Override
+    protected void makeSound(Level level, BlockPos blockPos) {
+        level.playSound(null, blockPos, SoundEvents.STONE_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
     }
 
     private static final List<BlockState> LOW_TIER_ORES = List.of(

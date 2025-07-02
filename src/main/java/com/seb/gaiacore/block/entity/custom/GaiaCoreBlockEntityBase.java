@@ -1,5 +1,6 @@
 package com.seb.gaiacore.block.entity.custom;
 
+import com.seb.gaiacore.block.custom.GaiaCoreBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -35,6 +36,8 @@ public abstract class GaiaCoreBlockEntityBase extends BlockEntity implements Men
             }
         }
     };
+
+    protected boolean isDormant = true;
     protected LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
     protected final ContainerData data;
     protected int progress = 0;
@@ -86,6 +89,7 @@ public abstract class GaiaCoreBlockEntityBase extends BlockEntity implements Men
         tag.put("inventory", itemHandler.serializeNBT(provider));
         tag.putInt("core.progress", progress);
         tag.putInt("core.max_progress", maxProgress);
+        tag.putBoolean("core.is_dormant", isDormant);
         super.saveAdditional(tag, provider);
     }
 
@@ -97,6 +101,19 @@ public abstract class GaiaCoreBlockEntityBase extends BlockEntity implements Men
         }
         progress = tag.getInt("core.progress");
         maxProgress = tag.getInt("core.max_progress");
+        isDormant = tag.getBoolean("core.is_dormant");
+    }
+
+    public boolean isDormant() {
+        return isDormant;
+    }
+
+    public void setDormant(boolean dormant) {
+        this.isDormant = dormant;
+        setChanged();
+        if (level != null && !level.isClientSide()) {
+            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+        }
     }
 
     public boolean stillValid(Player player) {
@@ -105,13 +122,32 @@ public abstract class GaiaCoreBlockEntityBase extends BlockEntity implements Men
 
     @Nullable
     public abstract AbstractContainerMenu createMenu(int id, net.minecraft.world.entity.player.Inventory playerInventory, Player player);
-
-    protected abstract void tick(Level level, BlockPos blockPos, BlockState blockState);
-    protected abstract boolean conditionsMet(BlockState blockState);
     protected abstract String getCoreTranslationKey();
-
     protected void resetProgress() {
         progress = 0;
+    }
+    protected abstract boolean customConditionsMet(BlockState blockState);
+    protected abstract void checkForDormantBreaker();
+    protected abstract void onProgressComplete(Level level, BlockPos blockPos, BlockState blockState);
+    protected abstract void makeSound(Level level, BlockPos blockPos);
+
+    public void tick(Level level, BlockPos blockPos, BlockState blockState) {
+        if (isDormant && !blockState.getValue(GaiaCoreBase.POWERED)) { // TODO temp POWERED check for debugging
+            checkForDormantBreaker();
+            return;
+        }
+
+        if (!blockState.getValue(GaiaCoreBase.POWERED)) {
+            return;
+        }
+
+        progress++;
+        setChanged(level, blockPos, blockState);
+        if (progress >= maxProgress) {
+            onProgressComplete(level, blockPos, blockState);
+            makeSound(level, blockPos);
+            resetProgress();
+        }
     }
 
     @Nullable

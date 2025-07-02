@@ -16,22 +16,23 @@ public class VolcanicGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     }
 
     @Override
-    public void tick(Level level, BlockPos blockPos, BlockState blockState) {
-        if (conditionsMet(blockState)) {
-            progress++;
-            setChanged(level, blockPos, blockState);
-            if (progress >= maxProgress) {
-                resetProgress();
-            }
-        } else {
-            resetProgress();
-        }
+    protected boolean customConditionsMet(BlockState blockState) {
+        return false;
     }
 
     @Override
-    protected boolean conditionsMet(BlockState blockState) {
-        // Placeholder: implement volcanic-specific condition logic here
-        return blockState.getValue(com.seb.gaiacore.block.custom.GaiaCoreBase.POWERED);
+    protected void checkForDormantBreaker() {
+
+    }
+
+    @Override
+    protected void onProgressComplete(Level level, BlockPos blockPos, BlockState blockState) {
+
+    }
+
+    @Override
+    protected void makeSound(Level level, BlockPos blockPos) {
+
     }
 
     @Nullable

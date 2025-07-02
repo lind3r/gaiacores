@@ -14,6 +14,6 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         // basicItem(ModItems.GAIA_SCANNER.get()); // Manual JSON
-        basicItem(ModItems.COFFEE.get());
+        // basicItem(ModItems.COFFEE.get());
     }
 }

@@ -20,7 +20,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(ModTags.Items.TRANSFORMABLE_ITEMS)
-                .add(ModItems.COFFEE.get());
+//        tag(ModTags.Items.TRANSFORMABLE_ITEMS)
+//                .add(ModItems.COFFEE.get());
     }
 }

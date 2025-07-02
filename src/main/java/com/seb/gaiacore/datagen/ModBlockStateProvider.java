@@ -18,32 +18,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-
-//        blockWithItem(ModBlocks.ENERGETIC_GAIA_CORE);
-
         gaiaCore(ModBlocks.ENERGETIC_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.ENERGETIC);
         gaiaCore(ModBlocks.VOLCANIC_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.VOLCANIC);
 
         blockWithItem(ModBlocks.GAIA_CORE_ANALYZER);
-
-//        stairsBlock(ModBlocks.ALEXANDRITE_STAIRS.get(), blockTexture(ModBlocks.ALEXANDRITE.get()));
-//        slabBlock(ModBlocks.ALEXANDRITE_SLAB.get(), blockTexture(ModBlocks.ALEXANDRITE.get()), blockTexture(ModBlocks.ALEXANDRITE.get()));
-//
-//        buttonBlock(ModBlocks.ALEXANDRITE_BUTTON.get(), blockTexture(ModBlocks.ALEXANDRITE.get()));
-//        pressurePlateBlock(ModBlocks.ALEXANDRITE_PRESSURE_PLATE.get(), blockTexture(ModBlocks.ALEXANDRITE.get()));
-//
-//        fenceBlock(ModBlocks.ALEXANDRITE_FENCE.get(), blockTexture(ModBlocks.ALEXANDRITE.get()));
-//        fenceGateBlock(ModBlocks.ALEXANDRITE_FENCE_GATE.get(), blockTexture(ModBlocks.ALEXANDRITE.get()));
-//        wallBlock(ModBlocks.ALEXANDRITE_WALL.get(), blockTexture(ModBlocks.ALEXANDRITE.get()));
-//
-//        doorBlockWithRenderType(ModBlocks.ALEXANDRITE_DOOR.get(), modLoc("block/alexandrite_door_bottom"), modLoc("block/alexandrite_door_top"), "cutout");
-//        trapdoorBlockWithRenderType(ModBlocks.ALEXANDRITE_TRAPDOOR.get(), modLoc("block/alexandrite_trapdoor"), true, "cutout");
-//
-//        blockItem(ModBlocks.ALEXANDRITE_STAIRS);
-//        blockItem(ModBlocks.ALEXANDRITE_SLAB);
-//        blockItem(ModBlocks.ALEXANDRITE_PRESSURE_PLATE);
-//        blockItem(ModBlocks.ALEXANDRITE_FENCE_GATE);
-//        blockItem(ModBlocks.ALEXANDRITE_TRAPDOOR, "_bottom");
     }
 
     private void gaiaCore(RegistryObject<Block> block, GaiaCoreBase.GaiaCoreVariant gaiaCoreVariant) {
@@ -66,15 +44,4 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
     }
-
-
-//    private void blockItem(RegistryObject<? extends Block> blockRegistryObject) {
-//        simpleBlockItem(blockRegistryObject.get(), new ModelFile.UncheckedModelFile("tutorialmod:block/" +
-//                ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath()));
-//    }
-//
-//    private void blockItem(RegistryObject<? extends Block> blockRegistryObject, String appendix) {
-//        simpleBlockItem(blockRegistryObject.get(), new ModelFile.UncheckedModelFile("tutorialmod:block/" +
-//                ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath() + appendix));
-//    }
 }

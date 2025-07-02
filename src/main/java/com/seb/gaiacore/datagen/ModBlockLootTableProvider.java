@@ -45,17 +45,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 //                block -> createDoorTable(ModBlocks.ALEXANDRITE_DOOR.get()));
     }
 
-//    protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {
-//        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-//        return this.createSilkTouchDispatchTable(
-//                pBlock, this.applyExplosionDecay(
-//                        pBlock, LootItem.lootTableItem(item)
-//                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
-//                                .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
-//                )
-//        );
-//    }
-
     @Override
     protected Iterable<Block> getKnownBlocks() {
         return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;

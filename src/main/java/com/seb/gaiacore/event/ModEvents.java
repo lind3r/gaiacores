@@ -1,8 +1,6 @@
 package com.seb.gaiacore.event;
 
 import com.seb.gaiacore.GaiaCore;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

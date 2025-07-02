@@ -17,10 +17,9 @@ public class ModCreativeModsTabs {
 
     public static final RegistryObject<CreativeModeTab> GAIACORE_ITEMS_TAB = CREATIVE_MODE_TABS
             .register("gaiacore_items_tab", () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(ModItems.COFFEE.get()))
+                    .icon(() -> new ItemStack(ModItems.GAIA_SCANNER.get()))
                     .title(Component.translatable("creativetab.gaiacore.items"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModItems.COFFEE.get());
                         output.accept(ModItems.GAIA_SCANNER.get());
                     }).build());
 
