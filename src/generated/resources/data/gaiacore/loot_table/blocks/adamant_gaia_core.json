@@ -20,11 +20,11 @@
               "source": "block_entity"
             }
           ],
-          "name": "gaiacore:energetic_gaia_core"
+          "name": "gaiacore:adamant_gaia_core"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "gaiacore:blocks/energetic_gaia_core"
+  "random_sequence": "gaiacore:blocks/adamant_gaia_core"
 }

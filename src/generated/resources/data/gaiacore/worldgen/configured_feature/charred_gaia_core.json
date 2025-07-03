@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "gaiacore:energetic_gaia_core",
+          "Name": "gaiacore:charred_gaia_core",
           "Properties": {
             "anchored": "true",
             "powered": "false"
@@ -14,7 +14,7 @@
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
-          "tag": "minecraft:stone_ore_replaceables"
+          "tag": "minecraft:deepslate_ore_replaceables"
         }
       }
     ]

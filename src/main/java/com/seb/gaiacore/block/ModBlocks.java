@@ -18,8 +18,8 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, GaiaCore.MOD_ID);
 
-    public static final RegistryObject<Block> ENERGETIC_GAIA_CORE = registerBlock("energetic_gaia_core",
-            () -> new EnergeticGaiaCore(BlockBehaviour.Properties.of()
+    public static final RegistryObject<Block> LUCENT_GAIA_CORE = registerBlock("lucent_gaia_core",
+            () -> new LucentGaiaCore(BlockBehaviour.Properties.of()
                     .strength(4.0f, 3600000.0f)
                     .lightLevel(state -> state.getValue(GaiaCoreBase.POWERED) ? 15 : 0)));
 
@@ -30,6 +30,16 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> VERDANT_GAIA_CORE = registerBlock("verdant_gaia_core",
             () -> new VerdantGaiaCore(BlockBehaviour.Properties.of()
+                    .strength(4.0f, 3600000.0f)
+                    .lightLevel(state -> state.getValue(GaiaCoreBase.POWERED) ? 15 : 0)));
+
+    public static final RegistryObject<Block> CHARRED_GAIA_CORE = registerBlock("charred_gaia_core",
+            () -> new CharredGaiaCore(BlockBehaviour.Properties.of()
+                    .strength(4.0f, 3600000.0f)
+                    .lightLevel(state -> state.getValue(GaiaCoreBase.POWERED) ? 15 : 0)));
+
+    public static final RegistryObject<Block> ADAMANT_GAIA_CORE = registerBlock("adamant_gaia_core",
+            () -> new AdamantGaiaCore(BlockBehaviour.Properties.of()
                     .strength(4.0f, 3600000.0f)
                     .lightLevel(state -> state.getValue(GaiaCoreBase.POWERED) ? 15 : 0)));
 

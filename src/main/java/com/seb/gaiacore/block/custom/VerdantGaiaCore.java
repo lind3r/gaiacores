@@ -33,7 +33,7 @@ public class VerdantGaiaCore extends GaiaCoreBase {
         if (pLevel.isClientSide()) {
             return null;
         }
-        return createTickerHelper(pBlockEntityType, ModBlockEntities.ENERGETIC_GAIA_CORE_BE.get(),
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.VERDANT_GAIA_CORE_BE.get(),
                 (level, blockPos, blockState, be)
                         -> be.tick(level, blockPos, blockState));
     }

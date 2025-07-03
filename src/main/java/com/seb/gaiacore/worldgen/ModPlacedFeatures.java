@@ -15,16 +15,28 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import java.util.List;
 
 public class ModPlacedFeatures {
-    public static final ResourceKey<PlacedFeature> ENERGETIC_GAIA_CORE_PLACED_KEY = registerKey("energetic_gaia_core_placed");
+    public static final ResourceKey<PlacedFeature> LUCENT_GAIA_CORE_PLACED_KEY = registerKey("lucent_gaia_core_placed");
     public static final ResourceKey<PlacedFeature> VOLCANIC_GAIA_CORE_PLACED_KEY = registerKey("volcanic_gaia_core_placed");
+    public static final ResourceKey<PlacedFeature> VERDANT_GAIA_CORE_PLACED_KEY = registerKey("verdant_gaia_core_placed");
+    public static final ResourceKey<PlacedFeature> CHARRED_GAIA_CORE_PLACED_KEY = registerKey("charred_gaia_core_placed");
+    public static final ResourceKey<PlacedFeature> ADAMANT_GAIA_CORE_PLACED_KEY = registerKey("adamant_gaia_core_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        register(context, ENERGETIC_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.ENERGETIC_GAIA_CORE_KEY),
+        register(context, LUCENT_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LUCENT_GAIA_CORE_KEY),
                 ModOrePlacement.rareOrePlacement(2, HeightRangePlacement.uniform(
                         VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
         register(context, VOLCANIC_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.VOLCANIC_GAIA_CORE_KEY),
+                ModOrePlacement.rareOrePlacement(2, HeightRangePlacement.uniform(
+                        VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
+        register(context, VERDANT_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.VERDANT_GAIA_CORE_KEY),
+                ModOrePlacement.rareOrePlacement(2, HeightRangePlacement.uniform(
+                        VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
+        register(context, CHARRED_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CHARRED_GAIA_CORE_KEY),
+                ModOrePlacement.rareOrePlacement(2, HeightRangePlacement.uniform(
+                        VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
+        register(context, ADAMANT_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.ADAMANT_GAIA_CORE_KEY),
                 ModOrePlacement.rareOrePlacement(2, HeightRangePlacement.uniform(
                         VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
     }

@@ -2,7 +2,7 @@ package com.seb.gaiacore.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import com.seb.gaiacore.block.entity.ModBlockEntities;
-import com.seb.gaiacore.block.entity.custom.EnergeticGaiaCoreBlockEntity;
+import com.seb.gaiacore.block.entity.custom.AdamantGaiaCoreBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -12,12 +12,12 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class EnergeticGaiaCore extends GaiaCoreBase {
-    public EnergeticGaiaCore(Properties properties) {
-        super(properties, GaiaCoreVariant.ENERGETIC);
+public class AdamantGaiaCore extends GaiaCoreBase {
+    public AdamantGaiaCore(Properties properties) {
+        super(properties, GaiaCoreVariant.ADAMANT);
     }
 
-    public static final MapCodec<EnergeticGaiaCore> CODEC = simpleCodec(EnergeticGaiaCore::new);
+    public static final MapCodec<AdamantGaiaCore> CODEC = simpleCodec(AdamantGaiaCore::new);
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
         return CODEC;
@@ -25,7 +25,7 @@ public class EnergeticGaiaCore extends GaiaCoreBase {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new EnergeticGaiaCoreBlockEntity(pPos, pState);
+        return new AdamantGaiaCoreBlockEntity(pPos, pState);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class EnergeticGaiaCore extends GaiaCoreBase {
         if (pLevel.isClientSide()) {
             return null;
         }
-        return createTickerHelper(pBlockEntityType, ModBlockEntities.ENERGETIC_GAIA_CORE_BE.get(),
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.ADAMANT_GAIA_CORE_BE.get(),
                 (level, blockPos, blockState, be)
                         -> be.tick(level, blockPos, blockState));
     }

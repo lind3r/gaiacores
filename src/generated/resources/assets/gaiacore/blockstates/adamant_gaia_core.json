@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "anchored=false,powered=false": {
+      "model": "gaiacore:block/adamant_gaia_core_unpowered"
+    },
+    "anchored=false,powered=true": {
+      "model": "gaiacore:block/adamant_gaia_core_powered"
+    },
+    "anchored=true,powered=false": {
+      "model": "gaiacore:block/adamant_gaia_core_unpowered"
+    },
+    "anchored=true,powered=true": {
+      "model": "gaiacore:block/adamant_gaia_core_powered"
+    }
+  }
+}

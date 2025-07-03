@@ -13,22 +13,19 @@ import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModBiomeModifiers {
-    public static final ResourceKey<BiomeModifier> ADD_ENERGETIC_GAIA_CORE = registerKey("add_energetic_gaia_core");
+    public static final ResourceKey<BiomeModifier> ADD_LUCENT_GAIA_CORE = registerKey("add_lucent_gaia_core");
     public static final ResourceKey<BiomeModifier> ADD_VOLCANIC_GAIA_CORE = registerKey("add_volcanic_gaia_core");
+    public static final ResourceKey<BiomeModifier> ADD_VERDANT_GAIA_CORE = registerKey("add_verdant_gaia_core");
+    public static final ResourceKey<BiomeModifier> ADD_CHARRED_GAIA_CORE = registerKey("add_charred_gaia_core");
+    public static final ResourceKey<BiomeModifier> ADD_ADAMANT_GAIA_CORE = registerKey("add_adamant_gaia_core");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeature = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
 
-//         Individual Biomes Example
-//         context.register(ADD_ALEXANDRITE_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-//                 HolderSet.direct(biomes.getOrThrow(Biomes.PLAINS), biomes.getOrThrow(Biomes.BAMBOO_JUNGLE)),
-//                 HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.ALEXANDRITE_ORE_PLACED_KEY)),
-//                 GenerationStep.Decoration.UNDERGROUND_ORES));
-
-        context.register(ADD_ENERGETIC_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_LUCENT_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.ENERGETIC_GAIA_CORE_PLACED_KEY)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.LUCENT_GAIA_CORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
         context.register(ADD_VOLCANIC_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
@@ -36,6 +33,20 @@ public class ModBiomeModifiers {
                 HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.VOLCANIC_GAIA_CORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
+        context.register(ADD_VERDANT_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.VERDANT_GAIA_CORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_CHARRED_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.CHARRED_GAIA_CORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_ADAMANT_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.ADAMANT_GAIA_CORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {

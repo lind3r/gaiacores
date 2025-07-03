@@ -1,16 +1,36 @@
 package com.seb.gaiacore.event;
 
 import com.seb.gaiacore.GaiaCore;
-import com.seb.gaiacore.block.ModBlocks;
-import com.seb.gaiacore.block.entity.custom.EnergeticGaiaCoreBlockEntity;
+import com.seb.gaiacore.block.entity.custom.GaiaCoreBlockEntityBase;
+import com.seb.gaiacore.block.entity.custom.VolcanicGaiaCoreBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.level.ExplosionEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = GaiaCore.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvents {
+
+    @SubscribeEvent
+    public static void onLivingDeath(LivingDeathEvent event) {
+        LivingEntity entity = event.getEntity();
+
+        BlockPos below1 = entity.blockPosition().below(1);
+        BlockPos below2 = entity.blockPosition().below(2);
+        BlockEntity be1 = entity.level().getBlockEntity(below1);
+        BlockEntity be2 = entity.level().getBlockEntity(below2);
+
+        if (be1 instanceof VolcanicGaiaCoreBlockEntity core1) {
+            core1.onHostileEntityKilled(event);
+        }
+        if (be2 instanceof VolcanicGaiaCoreBlockEntity core2) {
+            core2.onHostileEntityKilled(event);
+        }
+    }
 
     @SubscribeEvent
     public static void onExplosionDetonate(ExplosionEvent.Detonate event) {
@@ -25,10 +45,8 @@ public class ModEvents {
                 centerPos.offset(-checkRadius, -checkRadius, -checkRadius),
                 centerPos.offset(checkRadius, checkRadius, checkRadius))) {
             BlockState state = event.getLevel().getBlockState(pos);
-            if (state.is(ModBlocks.ENERGETIC_GAIA_CORE.get())) {
-                if (event.getLevel().getBlockEntity(pos) instanceof EnergeticGaiaCoreBlockEntity core) {
-                    core.onExplosionNearby();
-                }
+            if (event.getLevel().getBlockEntity(pos) instanceof GaiaCoreBlockEntityBase core) {
+                core.onExplosionNearby();
             }
         }
     }

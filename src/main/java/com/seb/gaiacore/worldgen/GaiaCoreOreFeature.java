@@ -24,7 +24,6 @@ public class GaiaCoreOreFeature extends Feature<OreConfiguration> {
         RandomSource random = context.random();
         BlockPos origin = context.origin();
 
-        // Use vanilla OreFeature logic (copy-paste if needed)
         boolean success = false;
         for (BlockState state : config.targetStates.stream().map(rule -> rule.state).toList()) {
             for (int i = 0; i < config.size; i++) {

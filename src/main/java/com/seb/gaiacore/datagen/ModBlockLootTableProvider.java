@@ -18,12 +18,16 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ModBlocks.GAIA_CORE_ANALYZER.get());
 
-        this.add(ModBlocks.ENERGETIC_GAIA_CORE.get(),
-                block -> createNameableBlockEntityTable(ModBlocks.ENERGETIC_GAIA_CORE.get()));
+        this.add(ModBlocks.LUCENT_GAIA_CORE.get(),
+                block -> createNameableBlockEntityTable(ModBlocks.LUCENT_GAIA_CORE.get()));
         this.add(ModBlocks.VOLCANIC_GAIA_CORE.get(),
                 block -> createNameableBlockEntityTable(ModBlocks.VOLCANIC_GAIA_CORE.get()));
         this.add(ModBlocks.VERDANT_GAIA_CORE.get(),
                 block -> createNameableBlockEntityTable(ModBlocks.VERDANT_GAIA_CORE.get()));
+        this.add(ModBlocks.CHARRED_GAIA_CORE.get(),
+                block -> createNameableBlockEntityTable(ModBlocks.CHARRED_GAIA_CORE.get()));
+        this.add(ModBlocks.ADAMANT_GAIA_CORE.get(),
+                block -> createNameableBlockEntityTable(ModBlocks.ADAMANT_GAIA_CORE.get()));
     }
 
     @Override

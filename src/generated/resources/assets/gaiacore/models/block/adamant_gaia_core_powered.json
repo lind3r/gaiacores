@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "gaiacore:block/adamant_gaia_core_powered"
+  }
+}

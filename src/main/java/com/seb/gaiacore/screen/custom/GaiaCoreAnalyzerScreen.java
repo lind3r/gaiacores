@@ -34,7 +34,8 @@ public class GaiaCoreAnalyzerScreen extends AbstractContainerScreen<GaiaCoreAnal
 
         pGuiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
-        float textScale = 0.6f;
+        float textScale = 0.7f;
+        int textBoxWidth = 140;
 
         ItemStack storedItem = menu.getBlockEntity().getStoredItem();
         String translationKey;
@@ -43,26 +44,51 @@ public class GaiaCoreAnalyzerScreen extends AbstractContainerScreen<GaiaCoreAnal
         } else if (storedItem.has(ModDataComponentTypes.BLOCK_TRANSLATION_KEY.get())) {
             String analyzedBlockTranslationKey = (String) storedItem.get(ModDataComponentTypes.BLOCK_TRANSLATION_KEY.get());
             translationKey = switch (analyzedBlockTranslationKey) {
-                case "block.gaiacore.energetic_gaia_core" -> "block.gaiacore.energetic_gaia_core_analyze_text";
+                case "block.gaiacore.lucent_gaia_core" -> "block.gaiacore.lucent_gaia_core_analyze_text";
                 case "block.gaiacore.volcanic_gaia_core" -> "block.gaiacore.volcanic_gaia_core_analyze_text";
+                case "block.gaiacore.verdant_gaia_core" -> "block.gaiacore.verdant_gaia_core_analyze_text";
+                case "block.gaiacore.charred_gaia_core" -> "block.gaiacore.charred_gaia_core_analyze_text";
+                case "block.gaiacore.adamant_gaia_core" -> "block.gaiacore.adamant_gaia_core_analyze_text";
                 default -> "block.gaiacore.gaia_core_scanner_invalid_block_scanned";
             };
         } else {
             translationKey = "block.gaiacore.gaia_core_scanner_invalid_block_scanned";
         }
+
         Component textComponent = Component.translatable(translationKey);
-
-        pGuiGraphics.pose().pushPose();
-        pGuiGraphics.pose().translate(x + 59, y + 21, 0); // Move to text position
-        pGuiGraphics.pose().scale(textScale, textScale, 1.0F); // Scale text
-
-        int textBoxWidth = 150;
         List<FormattedCharSequence> lines = Minecraft.getInstance().font.split(textComponent, textBoxWidth);
-        for (int i = 0; i < lines.size(); i++) {
-            int newY = i * Minecraft.getInstance().font.lineHeight;
+        totalLines = lines.size();
+
+        // Begin text rendering
+        pGuiGraphics.pose().pushPose();
+        pGuiGraphics.pose().translate(x + 46, y + 21, 0); // Position for text
+        pGuiGraphics.pose().scale(textScale, textScale, 1.0F); // Text scale
+
+        int fontHeight = Minecraft.getInstance().font.lineHeight;
+
+        for (int i = scrollOffset; i < Math.min(scrollOffset + maxVisibleLines, lines.size()); i++) {
+            int newY = (i - scrollOffset) * fontHeight;
             pGuiGraphics.drawString(Minecraft.getInstance().font, lines.get(i), 0, newY, 0xFFFFFF, false);
         }
+
         pGuiGraphics.pose().popPose();
+    }
+
+    private int scrollOffset = 0;
+    private int maxVisibleLines = 7;
+    private int totalLines = 0;
+
+    @Override
+    public boolean mouseScrolled(double pMouseX, double pMouseY, double pScrollX, double pScrollY) {
+        int maxScroll = Math.max(0, totalLines - maxVisibleLines);
+
+        if (pScrollY > 0) {
+            scrollOffset = Math.max(0, scrollOffset - 1);
+        } else if (pScrollY < 0) {
+            scrollOffset = Math.min(maxScroll, scrollOffset + 1);
+        }
+
+        return true;
     }
 
     @Override

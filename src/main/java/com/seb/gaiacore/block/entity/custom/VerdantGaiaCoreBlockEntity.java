@@ -1,38 +1,88 @@
 package com.seb.gaiacore.block.entity.custom;
 
 import com.seb.gaiacore.block.entity.ModBlockEntities;
+import com.seb.gaiacore.util.ModBlockPosHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
-import java.util.Random;
 
 public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     public VerdantGaiaCoreBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.VERDANT_GAIA_CORE_BE.get(), pPos, pBlockState);
     }
 
-    @Override
-    protected boolean coreSpecificConditionsMet(BlockState blockState) {
-        // At least one adjacent block must be air
-        for (Direction dir : Direction.values()) {
-            BlockPos adjacentPos = worldPosition.relative(dir);
-            BlockState adjacentState = level.getBlockState(adjacentPos);
-            if (adjacentState.isAir()) {
-                return true;
+    public void tick(Level level, BlockPos blockPos, BlockState blockState) {
+        if (level == null || level.isClientSide) return;
+        if (isOnCooldown()) return;
+
+        ItemPair items = findRequiredItems(level);
+        if (items == null) return;
+
+        consumeItemsAndGrowTree(level, items.plankEntity, items.stickEntity);
+    }
+
+    private ItemPair findRequiredItems(Level level) {
+        List<ItemEntity> items = level.getEntitiesOfClass(ItemEntity.class,
+                new net.minecraft.world.phys.AABB(worldPosition));
+        ItemEntity plankEntity = null;
+        ItemEntity stickEntity = null;
+
+        for (ItemEntity item : items) {
+            if (plankEntity == null && item.getItem().is(Items.OAK_PLANKS)) {
+                plankEntity = item;
+            } else if (stickEntity == null && item.getItem().is(Items.STICK)) {
+                stickEntity = item;
             }
+        }
+        if (plankEntity != null && stickEntity != null) {
+            return new ItemPair(plankEntity, stickEntity);
+        }
+        return null;
+    }
+
+    private void consumeItemsAndGrowTree(Level level, ItemEntity plankEntity, ItemEntity stickEntity) {
+        // Consume one of each
+        plankEntity.getItem().shrink(1);
+        if (plankEntity.getItem().isEmpty()) plankEntity.discard();
+        stickEntity.getItem().shrink(1);
+        if (stickEntity.getItem().isEmpty()) stickEntity.discard();
+
+        if (canGrowTree(level)) {
+            setCooldown(defaultCooldown);
+        }
+    }
+
+    private boolean canGrowTree(Level level) {
+        Direction skyFacing = ModBlockPosHelper.findSkyFacing(level, worldPosition);
+        if (skyFacing != null) {
+            BlockPos treePos = worldPosition.relative(skyFacing);
+            BlockState saplingState = Blocks.OAK_SAPLING.defaultBlockState();
+            level.setBlock(treePos, saplingState, 3);
+            if (level instanceof ServerLevel serverLevel) {
+                ((SaplingBlock) Blocks.OAK_SAPLING).advanceTree(serverLevel, treePos, saplingState, serverLevel.random);
+            }
+            return true;
         }
         return false;
     }
 
-    @Override
-    protected void onProgressComplete(Level level, BlockPos blockPos, BlockState blockState) {
-
+    private static class ItemPair {
+        final ItemEntity plankEntity;
+        final ItemEntity stickEntity;
+        ItemPair(ItemEntity plankEntity, ItemEntity stickEntity) {
+            this.plankEntity = plankEntity;
+            this.stickEntity = stickEntity;
+        }
     }
 
     @Override
@@ -43,10 +93,5 @@ public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     @Override
     protected String getCoreTranslationKey() {
         return "block.gaiacore.verdant_gaia_core";
-    }
-
-    public void onExplosionNearby() {
-        if (level == null || level.isClientSide) return;
-        setAnchored(false);
     }
 }

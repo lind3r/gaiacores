@@ -26,13 +26,15 @@ public class ModCreativeModsTabs {
     public static final RegistryObject<CreativeModeTab> GAIACORE_BLOCKS_TAB = CREATIVE_MODE_TABS
         .register("gaiacore_blocks_tab", () -> CreativeModeTab.builder()
                 .withTabsBefore(GAIACORE_ITEMS_TAB.getId())
-                .icon(() -> new ItemStack(ModBlocks.ENERGETIC_GAIA_CORE.get()))
+                .icon(() -> new ItemStack(ModBlocks.LUCENT_GAIA_CORE.get()))
                 .title(Component.translatable("creativetab.gaiacore.blocks"))
                 .displayItems((itemDisplayParameters, output) -> {
-                    output.accept(ModBlocks.ENERGETIC_GAIA_CORE.get());
+                    output.accept(ModBlocks.GAIA_CORE_ANALYZER.get());
+                    output.accept(ModBlocks.LUCENT_GAIA_CORE.get());
                     output.accept(ModBlocks.VOLCANIC_GAIA_CORE.get());
                     output.accept(ModBlocks.VERDANT_GAIA_CORE.get());
-                    output.accept(ModBlocks.GAIA_CORE_ANALYZER.get());
+                    output.accept(ModBlocks.CHARRED_GAIA_CORE.get());
+                    output.accept(ModBlocks.ADAMANT_GAIA_CORE.get());
                 }).build());
 
     public static void register(IEventBus eventBus) {

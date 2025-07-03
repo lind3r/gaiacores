@@ -37,7 +37,7 @@ public abstract class GaiaCoreBase extends BaseEntityBlock {
                 .setValue(ANCHORED, true));
     }
 
-    public enum GaiaCoreVariant { ENERGETIC, VOLCANIC, VERDANT }
+    public enum GaiaCoreVariant { LUCENT, VOLCANIC, VERDANT, CHARRED, ADAMANT }
     public static final BooleanProperty POWERED = BooleanProperty.create("powered");
     public static final BooleanProperty ANCHORED = BooleanProperty.create("anchored");
 
@@ -50,7 +50,6 @@ public abstract class GaiaCoreBase extends BaseEntityBlock {
     public RenderShape getRenderShape(BlockState pState) {
         return RenderShape.MODEL;
     }
-    public GaiaCoreVariant getGaiaCoreVariant() { return gaiaCoreVariant; }
 
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos,

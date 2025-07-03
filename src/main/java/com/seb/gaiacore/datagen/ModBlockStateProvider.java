@@ -18,9 +18,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        gaiaCore(ModBlocks.ENERGETIC_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.ENERGETIC);
+        gaiaCore(ModBlocks.LUCENT_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.LUCENT);
         gaiaCore(ModBlocks.VOLCANIC_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.VOLCANIC);
         gaiaCore(ModBlocks.VERDANT_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.VERDANT);
+        gaiaCore(ModBlocks.CHARRED_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.CHARRED);
+        gaiaCore(ModBlocks.ADAMANT_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.ADAMANT);
 
         blockWithItem(ModBlocks.GAIA_CORE_ANALYZER);
     }
