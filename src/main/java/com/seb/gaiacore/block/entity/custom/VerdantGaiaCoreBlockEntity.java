@@ -19,16 +19,20 @@ import java.util.List;
 public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     public VerdantGaiaCoreBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.VERDANT_GAIA_CORE_BE.get(), pPos, pBlockState);
+        setCooldown(20);
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if (level == null || level.isClientSide) return;
-        if (isOnCooldown()) return;
 
         ItemPair items = findRequiredItems(level);
+
+        reduceCooldownIf(items != null);
+
+        if (isOnCooldown()) return;
         if (items == null) return;
 
-        consumeItemsAndGrowTree(level, items.plankEntity, items.stickEntity);
+        consumeItemsAndGrowTree(level, blockPos, items.plankEntity, items.stickEntity);
     }
 
     private ItemPair findRequiredItems(Level level) {
@@ -50,19 +54,18 @@ public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
         return null;
     }
 
-    private void consumeItemsAndGrowTree(Level level, ItemEntity plankEntity, ItemEntity stickEntity) {
-        // Consume one of each
+    private void consumeItemsAndGrowTree(Level level, BlockPos blockPos, ItemEntity plankEntity, ItemEntity stickEntity) {
         plankEntity.getItem().shrink(1);
         if (plankEntity.getItem().isEmpty()) plankEntity.discard();
         stickEntity.getItem().shrink(1);
         if (stickEntity.getItem().isEmpty()) stickEntity.discard();
 
-        if (canGrowTree(level)) {
+        if (canGrowTree(level, blockPos)) {
             setCooldown(defaultCooldown);
         }
     }
 
-    private boolean canGrowTree(Level level) {
+    private boolean canGrowTree(Level level, BlockPos blockPos) {
         Direction skyFacing = ModBlockPosHelper.findSkyFacing(level, worldPosition);
         if (skyFacing != null) {
             BlockPos treePos = worldPosition.relative(skyFacing);
@@ -70,6 +73,7 @@ public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
             level.setBlock(treePos, saplingState, 3);
             if (level instanceof ServerLevel serverLevel) {
                 ((SaplingBlock) Blocks.OAK_SAPLING).advanceTree(serverLevel, treePos, saplingState, serverLevel.random);
+                makeSound(level, blockPos);
             }
             return true;
         }
@@ -87,7 +91,7 @@ public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
 
     @Override
     protected void makeSound(Level level, BlockPos blockPos) {
-        level.playSound(null, blockPos, SoundEvents.STONE_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+        level.playSound(null, blockPos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
     }
 
     @Override

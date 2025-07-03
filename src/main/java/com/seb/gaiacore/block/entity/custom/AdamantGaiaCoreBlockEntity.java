@@ -9,13 +9,15 @@ import net.minecraft.world.level.block.state.BlockState;
 public class AdamantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     public AdamantGaiaCoreBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.ADAMANT_GAIA_CORE_BE.get(), pPos, pBlockState);
+        setCooldown(20);
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if (level == null || level.isClientSide) return;
 
+        reduceCooldownIf(false);
+
         if (isOnCooldown()) {
-            cooldown--;
             level.setBlockAndUpdate(blockPos, blockState.setValue(GaiaCoreBase.POWERED, false));
             return;
         }

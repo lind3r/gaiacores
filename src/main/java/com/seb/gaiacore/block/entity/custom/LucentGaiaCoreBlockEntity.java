@@ -18,18 +18,22 @@ import java.util.Random;
 public class LucentGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     public LucentGaiaCoreBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.LUCENT_GAIA_CORE_BE.get(), pPos, pBlockState);
+        setCooldown(10);
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if (level == null || level.isClientSide) return;
 
+        boolean conditionsMet = conditionsMet(blockState);
+
+        reduceCooldownIf(conditionsMet);
+
         if (isOnCooldown()) {
-            cooldown--;
             level.setBlockAndUpdate(blockPos, blockState.setValue(GaiaCoreBase.POWERED, false));
             return;
         }
 
-        if (!conditionsMet(blockState)) {
+        if (!conditionsMet) {
             level.setBlockAndUpdate(blockPos, blockState.setValue(GaiaCoreBase.POWERED, false));
             return;
         }

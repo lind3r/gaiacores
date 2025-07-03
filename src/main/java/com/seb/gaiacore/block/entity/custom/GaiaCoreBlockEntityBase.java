@@ -82,6 +82,12 @@ public abstract class GaiaCoreBlockEntityBase extends BlockEntity {
         return cooldown > 0;
     }
 
+    protected void reduceCooldownIf(boolean condition) {
+        if (condition && cooldown > 0) {
+            cooldown--;
+        }
+    }
+
     @Nullable
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {

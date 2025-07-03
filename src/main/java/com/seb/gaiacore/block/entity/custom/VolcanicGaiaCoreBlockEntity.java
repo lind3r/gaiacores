@@ -19,14 +19,11 @@ public class VolcanicGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
         super(ModBlockEntities.VOLCANIC_GAIA_CORE_BE.get(), pos, state);
     }
 
+    private BlockPos blockPos;
+
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if (level == null || level.isClientSide) return;
-
-        if (isOnCooldown()) {
-            cooldown--;
-            level.setBlockAndUpdate(blockPos, blockState.setValue(GaiaCoreBase.POWERED, false));
-            return;
-        }
+        this.blockPos = blockPos;
 
         // Check for Monster above
         BlockPos above = blockPos.above();
@@ -59,6 +56,7 @@ public class VolcanicGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
         BlockState targetState = level.getBlockState(groundPos);
         if (targetState.isAir()) {
             level.setBlock(groundPos, Blocks.LAVA.defaultBlockState(), 3);
+            makeSound(level, blockPos);
         }
     }
 
