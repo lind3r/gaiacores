@@ -41,11 +41,8 @@ public class VolcanicGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     public void onHostileEntityKilled(LivingDeathEvent event) {
         if (event.getEntity().getType().getCategory() != MobCategory.MONSTER) return;
         if (!event.getSource().getMsgId().equals("lava")) return;
-        if (isOnCooldown()) return;
 
         spawnLava();
-
-        setCooldown(defaultCooldown);
     }
 
     private void spawnLava() {
@@ -53,8 +50,7 @@ public class VolcanicGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
 
         Direction groundFacing = Direction.DOWN;
         BlockPos groundPos = worldPosition.relative(groundFacing);
-        BlockState targetState = level.getBlockState(groundPos);
-        if (targetState.isAir()) {
+        if (level.isEmptyBlock(groundPos)) {
             level.setBlock(groundPos, Blocks.LAVA.defaultBlockState(), 3);
             makeSound(level, blockPos);
         }

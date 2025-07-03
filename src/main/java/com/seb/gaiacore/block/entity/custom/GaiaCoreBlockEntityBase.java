@@ -56,9 +56,8 @@ public abstract class GaiaCoreBlockEntityBase extends BlockEntity {
             level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             if (!anchored) {
                 BlockState current = level.getBlockState(getBlockPos());
-                if (current.hasProperty(GaiaCoreBase.ANCHORED)) {
+                if (current.getValue(GaiaCoreBase.ANCHORED)) {
                     BlockState updated = current.setValue(GaiaCoreBase.ANCHORED, false);
-                    System.out.println("anchored set to false");
                     level.setBlock(getBlockPos(), updated, 3);
                 }
             }

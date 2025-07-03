@@ -18,54 +18,45 @@ import java.util.Random;
 public class LucentGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     public LucentGaiaCoreBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.LUCENT_GAIA_CORE_BE.get(), pPos, pBlockState);
-        setCooldown(10);
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if (level == null || level.isClientSide) return;
 
-        boolean conditionsMet = conditionsMet(blockState);
+        Direction skyFacing = ModBlockPosHelper.findSkyFacing(level, worldPosition);
+        if (skyFacing == null) return;
 
-        reduceCooldownIf(conditionsMet);
+        boolean hasGlowExceptSky = allSidesGlowstoneExcept(skyFacing);
+        boolean isDaytime = level.isDay();
+        BlockPos skyPos = worldPosition.relative(skyFacing);
+        boolean canSeeSky = level.canSeeSky(skyPos);
+        int skyLightLevel = level.getBrightness(LightLayer.SKY, skyPos);
 
-        if (isOnCooldown()) {
-            level.setBlockAndUpdate(blockPos, blockState.setValue(GaiaCoreBase.POWERED, false));
-            return;
+        boolean canRunEffect = hasGlowExceptSky && canSeeSky && isDaytime && skyLightLevel >= 15;
+
+        reduceCooldownIf(canRunEffect);
+
+        if (!isOnCooldown() && canRunEffect) {
+            spawnLowTierOres(level);
+            makeSound(level, blockPos);
+            setCooldown(10);
         }
 
-        if (!conditionsMet) {
-            level.setBlockAndUpdate(blockPos, blockState.setValue(GaiaCoreBase.POWERED, false));
-            return;
+        if (blockState.getValue(GaiaCoreBase.POWERED) != canRunEffect) {
+            level.setBlockAndUpdate(blockPos, blockState.setValue(GaiaCoreBase.POWERED, canRunEffect));
         }
 
-        // Spawn ores and set cooldown
-        spawnLowTierOres(level);
-        makeSound(level, blockPos);
-        setCooldown(defaultCooldown);
-        level.setBlockAndUpdate(blockPos, blockState.setValue(GaiaCoreBase.POWERED, true));
         setChanged(level, blockPos, blockState);
     }
 
-    private boolean conditionsMet(BlockState blockState) {
-        if (level == null) return false;
-
-        Direction skyFacing = ModBlockPosHelper.findSkyFacing(level, worldPosition);
-        if (skyFacing == null) return false;
-
-        // All other sides must be glowstone
+    private boolean allSidesGlowstoneExcept(Direction skip) {
         for (Direction dir : Direction.values()) {
-            if (dir == skyFacing) continue;
+            if (dir == skip) continue;
             BlockPos adjacent = worldPosition.relative(dir);
             if (!level.getBlockState(adjacent).is(Blocks.GLOWSTONE)) {
                 return false;
             }
         }
-
-        // Sky-facing side must be exposed to sunlight
-        BlockPos skyPos = worldPosition.relative(skyFacing);
-        if (!level.canSeeSky(skyPos)) return false;
-        if (level.getBrightness(LightLayer.SKY, skyPos) < 15) return false;
-
         return true;
     }
 
@@ -86,8 +77,7 @@ public class LucentGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
         Direction skyFacing = ModBlockPosHelper.findSkyFacing(level, worldPosition);
         if (skyFacing == null) return;
         BlockPos targetPos = worldPosition.relative(skyFacing);
-        BlockState targetState = level.getBlockState(targetPos);
-        if (targetState.isAir()) {
+        if (level.isEmptyBlock(targetPos)) {
             BlockState ore = LOW_TIER_ORES.get(RANDOM.nextInt(LOW_TIER_ORES.size()));
             level.setBlock(targetPos, ore, 3);
         }

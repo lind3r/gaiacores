@@ -1,5 +1,6 @@
 package com.seb.gaiacore.block.entity.custom;
 
+import com.seb.gaiacore.block.custom.GaiaCoreBase;
 import com.seb.gaiacore.block.entity.ModBlockEntities;
 import com.seb.gaiacore.util.ModBlockPosHelper;
 import net.minecraft.core.BlockPos;
@@ -13,79 +14,86 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 
 import java.util.List;
 
 public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     public VerdantGaiaCoreBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.VERDANT_GAIA_CORE_BE.get(), pPos, pBlockState);
-        setCooldown(20);
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if (level == null || level.isClientSide) return;
 
-        ItemPair items = findRequiredItems(level);
+        BlockPos above = blockPos.above();
 
-        reduceCooldownIf(items != null);
+        AABB box = new AABB(blockPos).inflate(1);
+        List<ItemEntity> items = level.getEntitiesOfClass(ItemEntity.class, box);
 
-        if (isOnCooldown()) return;
-        if (items == null) return;
-
-        consumeItemsAndGrowTree(level, blockPos, items.plankEntity, items.stickEntity);
-    }
-
-    private ItemPair findRequiredItems(Level level) {
-        List<ItemEntity> items = level.getEntitiesOfClass(ItemEntity.class,
-                new net.minecraft.world.phys.AABB(worldPosition));
         ItemEntity plankEntity = null;
         ItemEntity stickEntity = null;
 
         for (ItemEntity item : items) {
-            if (plankEntity == null && item.getItem().is(Items.OAK_PLANKS)) {
-                plankEntity = item;
-            } else if (stickEntity == null && item.getItem().is(Items.STICK)) {
-                stickEntity = item;
-            }
+            if (plankEntity == null && item.getItem().is(Items.OAK_PLANKS)) plankEntity = item;
+            else if (stickEntity == null && item.getItem().is(Items.STICK)) stickEntity = item;
         }
-        if (plankEntity != null && stickEntity != null) {
-            return new ItemPair(plankEntity, stickEntity);
+
+        boolean hasAny = plankEntity != null || stickEntity != null;
+        boolean hasBoth = plankEntity != null && stickEntity != null;
+        boolean shouldBePowered = hasAny;
+
+        BlockState aboveState = level.getBlockState(above);
+        boolean saplingOrTreePresent = !level.isEmptyBlock(above)
+                && (aboveState.is(Blocks.OAK_SAPLING)
+                || aboveState.is(Blocks.OAK_LOG)
+                || aboveState.is(Blocks.BIRCH_LOG)
+                || aboveState.is(Blocks.SPRUCE_LOG)
+                || aboveState.is(Blocks.JUNGLE_LOG)
+                || aboveState.is(Blocks.DARK_OAK_LOG)
+                || aboveState.is(Blocks.ACACIA_LOG));
+
+        if (hasBoth && !saplingOrTreePresent) {
+            consumeItems(plankEntity, stickEntity);
+            placeDirtAndGrowTree(level, blockPos);
+            shouldBePowered = false;
         }
-        return null;
+
+        if (blockState.getValue(GaiaCoreBase.POWERED) != shouldBePowered) {
+            level.setBlockAndUpdate(blockPos, blockState.setValue(GaiaCoreBase.POWERED, shouldBePowered));
+        }
+
+        setChanged(level, blockPos, blockState);
     }
 
-    private void consumeItemsAndGrowTree(Level level, BlockPos blockPos, ItemEntity plankEntity, ItemEntity stickEntity) {
-        plankEntity.getItem().shrink(1);
-        if (plankEntity.getItem().isEmpty()) plankEntity.discard();
-        stickEntity.getItem().shrink(1);
-        if (stickEntity.getItem().isEmpty()) stickEntity.discard();
-
-        if (canGrowTree(level, blockPos)) {
-            setCooldown(defaultCooldown);
+    private void consumeItems(ItemEntity plankEntity, ItemEntity stickEntity) {
+        if (plankEntity != null) {
+            plankEntity.getItem().shrink(1);
+            if (plankEntity.getItem().isEmpty()) plankEntity.discard();
+        }
+        if (stickEntity != null) {
+            stickEntity.getItem().shrink(1);
+            if (stickEntity.getItem().isEmpty()) stickEntity.discard();
         }
     }
 
-    private boolean canGrowTree(Level level, BlockPos blockPos) {
-        Direction skyFacing = ModBlockPosHelper.findSkyFacing(level, worldPosition);
-        if (skyFacing != null) {
-            BlockPos treePos = worldPosition.relative(skyFacing);
-            BlockState saplingState = Blocks.OAK_SAPLING.defaultBlockState();
-            level.setBlock(treePos, saplingState, 3);
+    private void placeDirtAndGrowTree(Level level, BlockPos corePos) {
+        BlockPos dirtPos = corePos.above();
+        level.setBlock(dirtPos, Blocks.DIRT.defaultBlockState(), 3);
+
+        BlockPos saplingPos = dirtPos.above();
+
+        if (level.isEmptyBlock(saplingPos) || level.getBlockState(saplingPos).canBeReplaced()) {
+            level.setBlock(saplingPos, Blocks.OAK_SAPLING.defaultBlockState(), 3);
+
             if (level instanceof ServerLevel serverLevel) {
-                ((SaplingBlock) Blocks.OAK_SAPLING).advanceTree(serverLevel, treePos, saplingState, serverLevel.random);
-                makeSound(level, blockPos);
+                BlockState saplingState = serverLevel.getBlockState(saplingPos);
+                SaplingBlock saplingBlock = (SaplingBlock) saplingState.getBlock();
+                for (int i = 0; i < 8; i++) {
+                    saplingBlock.advanceTree(serverLevel, saplingPos, saplingState, serverLevel.getRandom());
+                }
+                makeSound(level, corePos);
             }
-            return true;
-        }
-        return false;
-    }
-
-    private static class ItemPair {
-        final ItemEntity plankEntity;
-        final ItemEntity stickEntity;
-        ItemPair(ItemEntity plankEntity, ItemEntity stickEntity) {
-            this.plankEntity = plankEntity;
-            this.stickEntity = stickEntity;
         }
     }
 

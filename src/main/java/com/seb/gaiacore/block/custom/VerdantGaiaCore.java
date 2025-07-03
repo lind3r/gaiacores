@@ -4,12 +4,15 @@ import com.mojang.serialization.MapCodec;
 import com.seb.gaiacore.block.entity.ModBlockEntities;
 import com.seb.gaiacore.block.entity.custom.VerdantGaiaCoreBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.IPlantable;
 import org.jetbrains.annotations.Nullable;
 
 public class VerdantGaiaCore extends GaiaCoreBase {
@@ -26,6 +29,11 @@ public class VerdantGaiaCore extends GaiaCoreBase {
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
         return new VerdantGaiaCoreBlockEntity(pPos, pState);
+    }
+
+    @Override
+    public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, IPlantable plantable) {
+        return true;
     }
 
     @Override
