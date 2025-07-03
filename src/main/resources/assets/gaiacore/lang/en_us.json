@@ -4,9 +4,12 @@
   "block.gaiacore.gaia_core_analyzer": "§5Gaia Core Analyzer§r",
   "block.gaiacore.energetic_gaia_core": "§eEnergetic Gaia Core§r",
   "block.gaiacore.volcanic_gaia_core": "§cVolcanic Gaia Core§r",
+  "block.gaiacore.verdant_gaia_core": "§2Verdant Gaia Core§r",
 
-  "block.gaiacore.energetic_gaia_core_analyze_text": "§eEnergetic§r §5Gaia Cores§r will spawn basic ores on each non-occupied side when powered. In order to make the block mineable, it has to be weakened by an explosive event nearby.",
-  "block.gaiacore.volcanic_gaia_core_analyze_text": "§cVolcanic§r §5Gaia Cores§r will spawn lava on the non-occupied side when all but one side is covered in Molten Signalum. In order to make the block mineable, it has to be cooled down with ice.",
+  "block.gaiacore.energetic_gaia_core_analyze_text": "§eEnergetic§r §5Gaia Cores§r will spawn basic ores on each non-occupied side when powered. In order to make the block mineable, it has to be weakened by an explosive event near the core.",
+  "block.gaiacore.volcanic_gaia_core_analyze_text": "§cVolcanic§r §5Gaia Cores§r will  In order to make the block mineable, it has to be weakened by an explosive event near the core.",
+  "block.gaiacore.verdant_gaia_core_analyze_text": "§2Verdant§r §5Gaia Cores§r will In order to make the block mineable, it has to be weakened by an explosive event near the core.",
+
   "block.gaiacore.gaia_core_scanner_insert_item": "Insert a §3Gaia Scanner§r with a scanned §5Gaia Core§r in the slot to the left.",
   "block.gaiacore.gaia_core_scanner_invalid_block_scanned": "Item is not a §3Gaia Scanner§r or the scanner does not have a §5Gaia Core§r scanned",
 

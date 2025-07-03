@@ -5,9 +5,7 @@ import com.seb.gaiacore.block.ModBlocks;
 import com.seb.gaiacore.block.entity.ModBlockEntities;
 import com.seb.gaiacore.component.ModDataComponentTypes;
 import com.seb.gaiacore.screen.ModMenuTypes;
-import com.seb.gaiacore.screen.custom.EnergeticGaiaCoreScreen;
 import com.seb.gaiacore.screen.custom.GaiaCoreAnalyzerScreen;
-import com.seb.gaiacore.screen.custom.VolcanicGaiaCoreScreen;
 import com.seb.gaiacore.sound.ModSounds;
 import com.seb.gaiacore.util.ModCreativeModsTabs;
 import com.seb.gaiacore.item.ModItems;
@@ -25,8 +23,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-
-import java.awt.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(GaiaCore.MOD_ID)
@@ -82,8 +78,6 @@ public class GaiaCore
             ModItemProperties.addCustomItemProperties();
 
             MenuScreens.register(ModMenuTypes.GAIA_CORE_ANALYZER_MENU.get(), GaiaCoreAnalyzerScreen::new);
-            MenuScreens.register(ModMenuTypes.ENERGETIC_GAIA_CORE_MENU.get(), EnergeticGaiaCoreScreen::new);
-            MenuScreens.register(ModMenuTypes.VOLCANIC_GAIA_CORE_MENU.get(), VolcanicGaiaCoreScreen::new);
         }
     }
 }

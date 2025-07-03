@@ -1,10 +1,7 @@
 package com.seb.gaiacore.block;
 
 import com.seb.gaiacore.GaiaCore;
-import com.seb.gaiacore.block.custom.EnergeticGaiaCore;
-import com.seb.gaiacore.block.custom.GaiaCoreAnalyzer;
-import com.seb.gaiacore.block.custom.GaiaCoreBase;
-import com.seb.gaiacore.block.custom.VolcanicGaiaCore;
+import com.seb.gaiacore.block.custom.*;
 import com.seb.gaiacore.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -23,12 +20,17 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ENERGETIC_GAIA_CORE = registerBlock("energetic_gaia_core",
             () -> new EnergeticGaiaCore(BlockBehaviour.Properties.of()
-                    .strength(-1.0f, 3600000.0f)
+                    .strength(4.0f, 3600000.0f)
                     .lightLevel(state -> state.getValue(GaiaCoreBase.POWERED) ? 15 : 0)));
 
     public static final RegistryObject<Block> VOLCANIC_GAIA_CORE = registerBlock("volcanic_gaia_core",
             () -> new VolcanicGaiaCore(BlockBehaviour.Properties.of()
-                    .strength(-1.0f, 3600000.0f)
+                    .strength(4.0f, 3600000.0f)
+                    .lightLevel(state -> state.getValue(GaiaCoreBase.POWERED) ? 15 : 0)));
+
+    public static final RegistryObject<Block> VERDANT_GAIA_CORE = registerBlock("verdant_gaia_core",
+            () -> new VerdantGaiaCore(BlockBehaviour.Properties.of()
+                    .strength(4.0f, 3600000.0f)
                     .lightLevel(state -> state.getValue(GaiaCoreBase.POWERED) ? 15 : 0)));
 
     public static final RegistryObject<Block> GAIA_CORE_ANALYZER = registerBlock("gaia_core_analyzer",

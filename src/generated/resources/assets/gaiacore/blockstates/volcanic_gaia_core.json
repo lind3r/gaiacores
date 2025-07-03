@@ -1,9 +1,15 @@
 {
   "variants": {
-    "powered=false": {
+    "anchored=false,powered=false": {
       "model": "gaiacore:block/volcanic_gaia_core_unpowered"
     },
-    "powered=true": {
+    "anchored=false,powered=true": {
+      "model": "gaiacore:block/volcanic_gaia_core_powered"
+    },
+    "anchored=true,powered=false": {
+      "model": "gaiacore:block/volcanic_gaia_core_unpowered"
+    },
+    "anchored=true,powered=true": {
       "model": "gaiacore:block/volcanic_gaia_core_powered"
     }
   }

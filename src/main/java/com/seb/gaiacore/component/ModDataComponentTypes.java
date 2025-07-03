@@ -4,6 +4,8 @@ import com.mojang.serialization.Codec;
 import com.seb.gaiacore.GaiaCore;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -16,6 +18,12 @@ public class ModDataComponentTypes {
 
     public static final RegistryObject<DataComponentType<String>> BLOCK_TRANSLATION_KEY = register("block_translation_key",
             builder -> builder.persistent(Codec.STRING));
+
+    public static final RegistryObject<DataComponentType<CompoundTag>> BLOCK_ENTITY_NBT = register("block_entity_nbt",
+            builder -> builder
+                    .persistent(CompoundTag.CODEC)
+                    .networkSynchronized(ByteBufCodecs.COMPOUND_TAG)
+    );
 
     private static <T>RegistryObject<DataComponentType<T>> register(String name, UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
         return DATA_COMPONENT_TYPES.register(name, () -> builderOperator.apply(DataComponentType.builder()).build());

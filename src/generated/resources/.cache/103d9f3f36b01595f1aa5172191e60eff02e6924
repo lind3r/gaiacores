@@ -1,7 +1,7 @@
-// 1.21.1	2025-06-30T15:01:42.4286745	Registries
+// 1.21.1	2025-07-03T13:04:56.4120884	Registries
 b4bb709d25f05e6f0dca2a053f03d51fc8ff00f2 data/gaiacore/forge/biome_modifier/add_energetic_gaia_core.json
 cf7aa2c7b1ab1a432b6543d37db667073f4fb696 data/gaiacore/forge/biome_modifier/add_volcanic_gaia_core.json
-bffb76353adde7441ecc18347e826326dec92d53 data/gaiacore/worldgen/configured_feature/energetic_gaia_core.json
-c4fbb5fe8b2523bde07fff590b44d59ee2892b57 data/gaiacore/worldgen/configured_feature/volcanic_gaia_core.json
+eafbb696b4e02a4ebbbc87e6de42677491c8901f data/gaiacore/worldgen/configured_feature/energetic_gaia_core.json
+594e1e6c34dec970f9bfb7a19917716ed6e8498e data/gaiacore/worldgen/configured_feature/volcanic_gaia_core.json
 a156773140659ec88c352b8e6c9976e2e482928f data/gaiacore/worldgen/placed_feature/energetic_gaia_core_placed.json
 0c56ae2afc590e9a8da13d952eb4d918c5680aa8 data/gaiacore/worldgen/placed_feature/volcanic_gaia_core_placed.json

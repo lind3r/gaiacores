@@ -20,6 +20,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         gaiaCore(ModBlocks.ENERGETIC_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.ENERGETIC);
         gaiaCore(ModBlocks.VOLCANIC_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.VOLCANIC);
+        gaiaCore(ModBlocks.VERDANT_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.VERDANT);
 
         blockWithItem(ModBlocks.GAIA_CORE_ANALYZER);
     }
@@ -37,8 +38,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
                         ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "block/" + name_unpowered)))};
             }
         });
-        simpleBlockItem(block.get(), models().cubeAll(name_powered,
-                ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "block/" + name_powered)));
+
+        simpleBlockItem(block.get(), models().cubeAll(name_unpowered,
+                ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "block/" + name_unpowered)));
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

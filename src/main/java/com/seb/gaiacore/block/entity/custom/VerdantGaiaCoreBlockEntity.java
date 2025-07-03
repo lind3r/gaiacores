@@ -5,16 +5,16 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.Random;
 
-public class EnergeticGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
-    public EnergeticGaiaCoreBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.ENERGETIC_GAIA_CORE_BE.get(), pPos, pBlockState);
+public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
+    public VerdantGaiaCoreBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.VERDANT_GAIA_CORE_BE.get(), pPos, pBlockState);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class EnergeticGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
 
     @Override
     protected void onProgressComplete(Level level, BlockPos blockPos, BlockState blockState) {
-        spawnLowTierOres(level);
+
     }
 
     @Override
@@ -40,28 +40,9 @@ public class EnergeticGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
         level.playSound(null, blockPos, SoundEvents.STONE_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
     }
 
-    private static final List<BlockState> LOW_TIER_ORES = List.of(
-            Blocks.COAL_ORE.defaultBlockState(),
-            Blocks.IRON_ORE.defaultBlockState(),
-            Blocks.COPPER_ORE.defaultBlockState()
-    );
-    private static final Random RANDOM = new Random();
-
-    private void spawnLowTierOres(Level level) {
-        if (level == null || level.isClientSide) return;
-        for (Direction dir : Direction.values()) {
-            BlockPos targetPos = worldPosition.relative(dir);
-            BlockState targetState = level.getBlockState(targetPos);
-            if (targetState.isAir()) {
-                BlockState ore = LOW_TIER_ORES.get(RANDOM.nextInt(LOW_TIER_ORES.size()));
-                level.setBlock(targetPos, ore, 3);
-            }
-        }
-    }
-
     @Override
     protected String getCoreTranslationKey() {
-        return "block.gaiacore.energetic_gaia_core";
+        return "block.gaiacore.verdant_gaia_core";
     }
 
     public void onExplosionNearby() {

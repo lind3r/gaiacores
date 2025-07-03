@@ -8,6 +8,7 @@
         "state": {
           "Name": "gaiacore:energetic_gaia_core",
           "Properties": {
+            "anchored": "true",
             "powered": "false"
           }
         },

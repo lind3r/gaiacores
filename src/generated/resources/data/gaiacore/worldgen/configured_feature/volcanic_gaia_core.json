@@ -8,6 +8,7 @@
         "state": {
           "Name": "gaiacore:volcanic_gaia_core",
           "Properties": {
+            "anchored": "true",
             "powered": "false"
           }
         },

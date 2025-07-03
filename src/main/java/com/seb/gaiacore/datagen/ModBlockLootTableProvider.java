@@ -17,32 +17,13 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.GAIA_CORE_ANALYZER.get());
-        dropSelf(ModBlocks.ENERGETIC_GAIA_CORE.get());
-        dropSelf(ModBlocks.VOLCANIC_GAIA_CORE.get());
 
-//        dropSelf(ModBlocks.COFFEE_BLOCK.get());
-//        dropSelf(ModBlocks.RAW_COFFEE_BLOCK.get());
-//        dropSelf(ModBlocks.ALEXANDRITE.get());
-//
-//        this.add(ModBlocks.COFFEE_ORE.get(), block -> createOreDrop(
-//                ModBlocks.COFFEE_ORE.get(), ModItems.RAW_COFFEE.get()));
-//        this.add(ModBlocks.COFFEE_DEEPSLATE_ORE.get(), block -> createMultipleOreDrops(
-//                ModBlocks.COFFEE_DEEPSLATE_ORE.get(), ModItems.RAW_COFFEE.get(), 22, 25));
-//
-//
-//        dropSelf(ModBlocks.ALEXANDRITE_STAIRS.get());
-//        this.add(ModBlocks.ALEXANDRITE_SLAB.get(),
-//                block -> createSlabItemTable(ModBlocks.ALEXANDRITE_SLAB.get()));
-//
-//        dropSelf(ModBlocks.ALEXANDRITE_PRESSURE_PLATE.get());
-//        dropSelf(ModBlocks.ALEXANDRITE_BUTTON.get());
-//        dropSelf(ModBlocks.ALEXANDRITE_FENCE.get());
-//        dropSelf(ModBlocks.ALEXANDRITE_FENCE_GATE.get());
-//        dropSelf(ModBlocks.ALEXANDRITE_WALL.get());
-//        dropSelf(ModBlocks.ALEXANDRITE_TRAPDOOR.get());
-//
-//        this.add(ModBlocks.ALEXANDRITE_DOOR.get(),
-//                block -> createDoorTable(ModBlocks.ALEXANDRITE_DOOR.get()));
+        this.add(ModBlocks.ENERGETIC_GAIA_CORE.get(),
+                block -> createNameableBlockEntityTable(ModBlocks.ENERGETIC_GAIA_CORE.get()));
+        this.add(ModBlocks.VOLCANIC_GAIA_CORE.get(),
+                block -> createNameableBlockEntityTable(ModBlocks.VOLCANIC_GAIA_CORE.get()));
+        this.add(ModBlocks.VERDANT_GAIA_CORE.get(),
+                block -> createNameableBlockEntityTable(ModBlocks.VERDANT_GAIA_CORE.get()));
     }
 
     @Override
