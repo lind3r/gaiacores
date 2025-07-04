@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-03T20:57:30.7661677	Block States: gaiacore
+// 1.21.1	2025-07-04T16:33:21.6790959	Block States: gaiacore
 5e9fb576cca18ad904a24872f03135afd8882c6b assets/gaiacore/blockstates/adamant_gaia_core.json
 377741761049cf135f5278fa038940909f7d714f assets/gaiacore/blockstates/charred_gaia_core.json
 10b2cdfbbab41e37d9c8889c0bef1f64bc4e6c60 assets/gaiacore/blockstates/gaia_core_analyzer.json
@@ -9,7 +9,7 @@ c334a3af0643d963b42f9443ee5b0e3cfdcbe3c0 assets/gaiacore/models/block/adamant_ga
 f94273840ce0cc89d1b88e101526087e016ca077 assets/gaiacore/models/block/adamant_gaia_core_unpowered.json
 511cbbacd27efa99998b5787274106e72b759725 assets/gaiacore/models/block/charred_gaia_core_powered.json
 f29d37c7e737620b82ef73db1086f25ff6804a91 assets/gaiacore/models/block/charred_gaia_core_unpowered.json
-cef638e11b131cb1d46304d02996ac81ae3be962 assets/gaiacore/models/block/gaia_core_analyzer.json
+24750570452c54358d2fd957a7191dc9c9f2762e assets/gaiacore/models/block/gaia_core_analyzer.json
 72e180d4a5e1586d43015371a952d4c405788f42 assets/gaiacore/models/block/lucent_gaia_core_powered.json
 53104b5b3bf34643680d9b8377d98be3af4dc8d8 assets/gaiacore/models/block/lucent_gaia_core_unpowered.json
 8a65768cef1c0f817df3d87abc86b61402fb6867 assets/gaiacore/models/block/verdant_gaia_core_powered.json

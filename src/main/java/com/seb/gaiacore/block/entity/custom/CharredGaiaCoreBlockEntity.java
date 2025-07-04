@@ -67,7 +67,7 @@ public class CharredGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
 
     @Override
     protected void makeSound(Level level, BlockPos blockPos) {
-        level.playSound(null, blockPos, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.BLOCKS, 1.0F, 1.0F);
+        level.playSound(null, blockPos, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.BLOCKS, 1.0f, 1.0f);
     }
 
     @Override

@@ -42,7 +42,7 @@ public class GaiaCoreOreFeature extends Feature<OreConfiguration> {
     }
 
     private void onOrePlaced(WorldGenLevel level, BlockPos pos, BlockState state) {
-        int radius = 5;
+        int radius = 4;
         int radiusSq = radius * radius;
 
         BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();

@@ -14,7 +14,7 @@
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
-          "tag": "minecraft:deepslate_ore_replaceables"
+          "tag": "minecraft:base_stone_nether"
         }
       }
     ]

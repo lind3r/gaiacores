@@ -24,7 +24,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         gaiaCore(ModBlocks.CHARRED_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.CHARRED);
         gaiaCore(ModBlocks.ADAMANT_GAIA_CORE, GaiaCoreBase.GaiaCoreVariant.ADAMANT);
 
-        blockWithItem(ModBlocks.GAIA_CORE_ANALYZER);
+        analyzerBlock(ModBlocks.GAIA_CORE_ANALYZER);
     }
 
     private void gaiaCore(RegistryObject<Block> block, GaiaCoreBase.GaiaCoreVariant gaiaCoreVariant) {
@@ -45,7 +45,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "block/" + name_unpowered)));
     }
 
-    private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
-        simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
+    private void analyzerBlock(RegistryObject<Block> block) {
+        String blockName = block.getId().getPath();
+
+        simpleBlockWithItem(block.get(),
+                models().orientable(
+                        blockName,
+                        ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "block/analyzer_side"),
+                        ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "block/analyzer_front"),
+                        ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "block/analyzer_side")
+                )
+        );
     }
 }

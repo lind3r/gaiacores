@@ -13,6 +13,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+import net.minecraftforge.common.Tags;
 
 public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> LUCENT_GAIA_CORE_KEY = registerKey("lucent_gaia_core");
@@ -24,16 +25,22 @@ public class ModConfiguredFeatures {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        RuleTest netherReplaceables = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
+        RuleTest endStoneReplaceables = new TagMatchTest(Tags.Blocks.END_STONES);
 
         register(context, LUCENT_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(stoneReplaceables,
                 ModBlocks.LUCENT_GAIA_CORE.get().defaultBlockState(), 1));
-        register(context, VOLCANIC_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(deepslateReplaceables,
+
+        register(context, VOLCANIC_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(netherReplaceables,
                 ModBlocks.VOLCANIC_GAIA_CORE.get().defaultBlockState(), 1));
-        register(context, VERDANT_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(deepslateReplaceables,
+
+        register(context, VERDANT_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(stoneReplaceables,
                 ModBlocks.VERDANT_GAIA_CORE.get().defaultBlockState(), 1));
+
         register(context, CHARRED_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(deepslateReplaceables,
                 ModBlocks.CHARRED_GAIA_CORE.get().defaultBlockState(), 1));
-        register(context, ADAMANT_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(deepslateReplaceables,
+
+        register(context, ADAMANT_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(endStoneReplaceables,
                 ModBlocks.ADAMANT_GAIA_CORE.get().defaultBlockState(), 1));
     }
 
