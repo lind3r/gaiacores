@@ -1,21 +1,28 @@
 package com.seb.gaiacore.block.entity.custom;
 
+import com.seb.gaiacore.Config;
 import com.seb.gaiacore.block.custom.GaiaCoreBase;
 import com.seb.gaiacore.block.entity.ModBlockEntities;
 import com.seb.gaiacore.util.ModBlockPosHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class LucentGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
+    private static final Random RANDOM = new Random();
+
     public LucentGaiaCoreBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.LUCENT_GAIA_CORE_BE.get(), pPos, pBlockState);
     }
@@ -37,9 +44,9 @@ public class LucentGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
         reduceCooldownIf(canRunEffect);
 
         if (!isOnCooldown() && canRunEffect) {
-            spawnLowTierOres(level);
+            spawnOres(level);
             makeSound(level, blockPos);
-            setCooldown(10);
+            setCooldown(Config.getLucentCoreCooldown());
         }
 
         if (blockState.getValue(GaiaCoreBase.POWERED) != canRunEffect) {
@@ -53,7 +60,7 @@ public class LucentGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
         for (Direction dir : Direction.values()) {
             if (dir == skip) continue;
             BlockPos adjacent = worldPosition.relative(dir);
-            if (!level.getBlockState(adjacent).is(Blocks.GLOWSTONE)) {
+            if (!level.getBlockState(adjacent).is(net.minecraft.world.level.block.Blocks.GLOWSTONE)) {
                 return false;
             }
         }
@@ -65,22 +72,31 @@ public class LucentGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
         level.playSound(null, blockPos, SoundEvents.STONE_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
     }
 
-    private static final List<BlockState> LOW_TIER_ORES = List.of(
-            Blocks.REDSTONE_ORE.defaultBlockState(),
-            Blocks.IRON_ORE.defaultBlockState(),
-            Blocks.COPPER_ORE.defaultBlockState()
-    );
-    private static final Random RANDOM = new Random();
-
-    private void spawnLowTierOres(Level level) {
+    private void spawnOres(Level level) {
         if (level == null || level.isClientSide) return;
         Direction skyFacing = ModBlockPosHelper.findSkyFacing(level, worldPosition);
         if (skyFacing == null) return;
+
         BlockPos targetPos = worldPosition.relative(skyFacing);
-        if (level.isEmptyBlock(targetPos)) {
-            BlockState ore = LOW_TIER_ORES.get(RANDOM.nextInt(LOW_TIER_ORES.size()));
-            level.setBlock(targetPos, ore, 3);
+        if (!level.isEmptyBlock(targetPos)) return;
+
+        Map<String, Integer> oreFrequencies = Config.getOreFrequencies();
+
+        List<Block> weightedOres = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : oreFrequencies.entrySet()) {
+            Block oreBlock = ForgeRegistries.BLOCKS.getValue(ResourceLocation.tryParse(entry.getKey()));
+            if (oreBlock != null) {
+                int weight = entry.getValue();
+                for (int i = 0; i < weight; i++) {
+                    weightedOres.add(oreBlock);
+                }
+            }
         }
+
+        if (weightedOres.isEmpty()) return;
+
+        Block selectedOre = weightedOres.get(RANDOM.nextInt(weightedOres.size()));
+        level.setBlock(targetPos, selectedOre.defaultBlockState(), 3);
     }
 
     @Override

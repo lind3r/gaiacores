@@ -1,63 +1,138 @@
 package com.seb.gaiacore;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-// An example config class. This is not required, but it's a good idea to have one to keep your config organized.
-// Demonstrates how to use Forge's config APIs
 @Mod.EventBusSubscriber(modid = GaiaCore.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class Config
-{
+public class Config {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
-    private static final ForgeConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
-            .comment("Whether to log the dirt block on common setup")
-            .define("logDirtBlock", true);
+    public static boolean lucentCoreGenEnabled = true;
+    public static boolean verdantCoreGenEnabled = true;
+    public static boolean volcanicCoreGenEnabled = true;
+    public static boolean charredCoreGenEnabled = true;
+    public static boolean adamantCoreGenEnabled = true;
 
-    private static final ForgeConfigSpec.IntValue MAGIC_NUMBER = BUILDER
-            .comment("A magic number")
-            .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
+    private static final ForgeConfigSpec.BooleanValue GENERATE_LUCENT_CORES = BUILDER
+            .comment("Include Lucent Gaia Cores in World Generation")
+            .define("generateLucentCores", true);
+    private static final ForgeConfigSpec.BooleanValue GENERATE_VERDANT_CORES = BUILDER
+            .comment("Include Verdant Gaia Cores in World Generation")
+            .define("generateVerdantCores", true);
+    private static final ForgeConfigSpec.BooleanValue GENERATE_VOLCANIC_CORES = BUILDER
+            .comment("Include Volcanic Gaia Cores in World Generation")
+            .define("generateVolcanicCores", true);
+    private static final ForgeConfigSpec.BooleanValue GENERATE_CHARRED_CORES = BUILDER
+            .comment("Include Charred Gaia Cores in World Generation")
+            .define("generateCharredCores", true);
+    private static final ForgeConfigSpec.BooleanValue GENERATE_ADAMANT_CORES = BUILDER
+            .comment("Include Adamant Gaia Cores in World Generation")
+            .define("generateAdamantCores", true);
 
-    public static final ForgeConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
-            .comment("What you want the introduction message to be for the magic number")
-            .define("magicNumberIntroduction", "The magic number is... ");
+    private static final ForgeConfigSpec.IntValue LUCENT_CORE_COOLDOWN = BUILDER
+            .comment("Lucent Gaia Core cooldown (ticks)")
+            .defineInRange("lucentCoreCooldown", 100, 0, Integer.MAX_VALUE);
+    private static final ForgeConfigSpec.IntValue VERDANT_CORE_COOLDOWN = BUILDER
+            .comment("Verdant Gaia Core cooldown (ticks)")
+            .defineInRange("verdantCoreCooldown", 200, 0, Integer.MAX_VALUE);
+    private static final ForgeConfigSpec.IntValue VOLCANIC_CORE_COOLDOWN = BUILDER
+            .comment("Volcanic Gaia Core cooldown (ticks)")
+            .defineInRange("volcanicCoreCooldown", 20, 0, Integer.MAX_VALUE);
+    private static final ForgeConfigSpec.IntValue CHARRED_CORE_COOLDOWN = BUILDER
+            .comment("Charred Gaia Core cooldown (ticks)")
+            .defineInRange("charredCoreCooldown", 100, 0, Integer.MAX_VALUE);
+    private static final ForgeConfigSpec.IntValue ADAMANT_CORE_COOLDOWN = BUILDER
+            .comment("Adamant Gaia Core cooldown (ticks)")
+            .defineInRange("adamantCoreCooldown", 100, 0, Integer.MAX_VALUE);
 
-    // a list of strings that are treated as resource locations for items
-    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ITEM_STRINGS = BUILDER
-            .comment("A list of items to log on common setup.")
-            .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ORE_FREQUENCIES_RAW;
 
-    static final ForgeConfigSpec SPEC = BUILDER.build();
+    public static final ForgeConfigSpec SPEC;
+    static {
+        List<String> defaultFrequencies = List.of(
+                "minecraft:coal_ore=0",
+                "minecraft:iron_ore=50",
+                "minecraft:copper_ore=50",
+                "minecraft:gold_ore=10",
+                "minecraft:redstone_ore=10",
+                "minecraft:lapis_ore=10",
+                "minecraft:diamond_ore=2",
+                "minecraft:emerald_ore=1",
+                "minecraft:nether_quartz_ore=5"
+        );
 
-    public static boolean logDirtBlock;
-    public static int magicNumber;
-    public static String magicNumberIntroduction;
-    public static Set<Item> items;
+        ORE_FREQUENCIES_RAW = BUILDER
+                .comment("Lucent Gaia Core ore list and frequency (namespace:block=frequency)")
+                .defineListAllowEmpty("oresAndFrequencies", defaultFrequencies, obj -> obj instanceof String);
 
-    private static boolean validateItemName(final Object obj)
-    {
-        return obj instanceof final String itemName && ForgeRegistries.ITEMS.containsKey(ResourceLocation.tryParse(itemName));
+        SPEC = BUILDER.build();
     }
 
-    @SubscribeEvent
-    static void onLoad(final ModConfigEvent event)
-    {
-        logDirtBlock = LOG_DIRT_BLOCK.get();
-        magicNumber = MAGIC_NUMBER.get();
-        magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
+    private static Map<String, Integer> validatedOreFrequencies = new HashMap<>();
 
-        // convert the list of strings into a set of items
-        items = ITEM_STRINGS.get().stream()
-                .map(itemName -> ForgeRegistries.ITEMS.getValue(ResourceLocation.tryParse(itemName)))
-                .collect(Collectors.toSet());
+    @SubscribeEvent
+    public static void onLoad(final ModConfigEvent event) {
+        if (!event.getConfig().getSpec().equals(SPEC)) return;
+
+        lucentCoreGenEnabled = GENERATE_LUCENT_CORES.get();
+        verdantCoreGenEnabled = GENERATE_VERDANT_CORES.get();
+        volcanicCoreGenEnabled = GENERATE_VOLCANIC_CORES.get();
+        charredCoreGenEnabled = GENERATE_CHARRED_CORES.get();
+        adamantCoreGenEnabled = GENERATE_ADAMANT_CORES.get();
+
+        parseOreFrequencies();
+    }
+
+    private static void parseOreFrequencies() {
+        validatedOreFrequencies = ORE_FREQUENCIES_RAW.get().stream()
+                .map(entry -> entry.split("=", 2))
+                .filter(parts -> parts.length == 2)
+                .collect(Collectors.toMap(
+                        parts -> parts[0],
+                        parts -> {
+                            try {
+                                return Integer.parseInt(parts[1]);
+                            } catch (NumberFormatException e) {
+                                return 0;
+                            }
+                        }
+                ));
+
+        validatedOreFrequencies = validatedOreFrequencies.entrySet().stream()
+                .filter(e -> {
+                    ResourceLocation key = ResourceLocation.tryParse(e.getKey());
+                    return key != null && ForgeRegistries.BLOCKS.containsKey(key);
+                })
+                .filter(e -> e.getValue() > 0)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+
+    public static int getLucentCoreCooldown() {
+        return LUCENT_CORE_COOLDOWN.get();
+    }
+    public static int getVerdantCoreCooldown() {
+        return VERDANT_CORE_COOLDOWN.get();
+    }
+    public static int getVolcanicCoreCooldown() {
+        return VOLCANIC_CORE_COOLDOWN.get();
+    }
+    public static int getCharredCoreCooldown() {
+        return CHARRED_CORE_COOLDOWN.get();
+    }
+    public static int getAdamantCoreCooldown() {
+        return ADAMANT_CORE_COOLDOWN.get();
+    }
+
+    public static Map<String, Integer> getOreFrequencies() {
+        return validatedOreFrequencies;
     }
 }

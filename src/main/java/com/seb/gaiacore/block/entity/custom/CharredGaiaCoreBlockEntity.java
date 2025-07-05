@@ -1,5 +1,6 @@
 package com.seb.gaiacore.block.entity.custom;
 
+import com.seb.gaiacore.Config;
 import com.seb.gaiacore.block.custom.GaiaCoreBase;
 import com.seb.gaiacore.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -52,7 +53,7 @@ public class CharredGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
             ItemEntity coal = new ItemEntity(level, animal.getX(), animal.getY(), animal.getZ(), Items.COAL.getDefaultInstance());
             level.addFreshEntity(coal);
             makeSound(level, blockPos);
-            setCooldown(defaultCooldown);
+            setCooldown(Config.getCharredCoreCooldown());
             setChanged(level, blockPos, blockState);
         }
     }

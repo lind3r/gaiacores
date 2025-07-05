@@ -1,7 +1,6 @@
 package com.seb.gaiacore.worldgen;
 
 import com.mojang.serialization.Codec;
-import com.seb.gaiacore.block.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
@@ -31,7 +30,6 @@ public class GaiaCoreOreFeature extends Feature<OreConfiguration> {
                 if (config.targetStates.get(0).target.test(level.getBlockState(pos), random)) {
                     level.setBlock(pos, state, 2);
 
-                    // Custom logic
                     onOrePlaced(level, pos, state);
 
                     success = true;

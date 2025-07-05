@@ -32,8 +32,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("AAA")
                 .pattern("ABA")
                 .pattern("AAA")
-                .define('A', Items.LAPIS_LAZULI)
-                .define('B', Items.IRON_INGOT)
+                .define('A', Items.IRON_INGOT)
+                .define('B', Items.LAPIS_LAZULI)
                 .unlockedBy(getHasName(Items.LAPIS_LAZULI), has(Items.LAPIS_LAZULI))
                 .save(pRecipeOutput);
 

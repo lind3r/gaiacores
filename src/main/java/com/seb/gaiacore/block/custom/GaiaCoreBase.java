@@ -57,7 +57,6 @@ public abstract class GaiaCoreBase extends BaseEntityBlock {
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity be = pLevel.getBlockEntity(pPos);
             if (be != null) {
-                // If the block entity has a drops() method, call it
                 try {
                     be.getClass().getMethod("drops").invoke(be);
                 } catch (Exception ignored) {}
@@ -94,7 +93,6 @@ public abstract class GaiaCoreBase extends BaseEntityBlock {
             CompoundTag tag = new CompoundTag();
             coreBE.saveAdditional(tag, null);
 
-            // Store the NBT as a string in a Data Component (add a new component type for this)
             stack.set(ModDataComponentTypes.BLOCK_ENTITY_NBT.get(), tag);
         }
 

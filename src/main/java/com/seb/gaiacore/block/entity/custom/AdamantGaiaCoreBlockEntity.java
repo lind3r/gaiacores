@@ -1,5 +1,6 @@
 package com.seb.gaiacore.block.entity.custom;
 
+import com.seb.gaiacore.Config;
 import com.seb.gaiacore.block.custom.GaiaCoreBase;
 import com.seb.gaiacore.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -43,7 +44,7 @@ public class AdamantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
             BlockPos coalPos = convertCoalToDiamond(level, coalItem);
             Entity creeper = spawnCreeper(level, coalPos);
             handleCreeperExplosion(creeper, level, blockPos);
-            setCooldown(defaultCooldown);
+            setCooldown(Config.getAdamantCoreCooldown());
             makeSound(level, blockPos);
         }
 

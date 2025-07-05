@@ -1,5 +1,6 @@
 package com.seb.gaiacore.block.entity.custom;
 
+import com.seb.gaiacore.Config;
 import com.seb.gaiacore.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -25,6 +26,11 @@ public class VolcanicGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
         if (level == null || level.isClientSide) return;
         this.blockPos = blockPos;
 
+        if (isOnCooldown()) {
+            cooldown--;
+            return;
+        }
+
         // Check for Monster above
         BlockPos above = blockPos.above();
         AABB aboveBox = new AABB(above);
@@ -42,7 +48,9 @@ public class VolcanicGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
         if (event.getEntity().getType().getCategory() != MobCategory.MONSTER) return;
         if (!event.getSource().getMsgId().equals("lava")) return;
 
-        spawnLava();
+        if (!isOnCooldown()) {
+            spawnLava();
+        }
     }
 
     private void spawnLava() {
@@ -53,6 +61,7 @@ public class VolcanicGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
         if (level.isEmptyBlock(groundPos)) {
             level.setBlock(groundPos, Blocks.LAVA.defaultBlockState(), 3);
             makeSound(level, blockPos);
+            setCooldown(Config.getVolcanicCoreCooldown());
         }
     }
 

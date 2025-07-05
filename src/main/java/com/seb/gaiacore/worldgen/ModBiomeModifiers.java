@@ -1,5 +1,6 @@
 package com.seb.gaiacore.worldgen;
 
+import com.seb.gaiacore.Config;
 import com.seb.gaiacore.GaiaCore;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
@@ -23,30 +24,40 @@ public class ModBiomeModifiers {
         var placedFeature = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
 
-        context.register(ADD_LUCENT_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.LUCENT_GAIA_CORE_PLACED_KEY)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));
+        if (Config.lucentCoreGenEnabled) {
+            context.register(ADD_LUCENT_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                    biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                    HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.LUCENT_GAIA_CORE_PLACED_KEY)),
+                    GenerationStep.Decoration.UNDERGROUND_ORES));
+        }
 
-        context.register(ADD_VOLCANIC_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTags.IS_NETHER),
-                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.VOLCANIC_GAIA_CORE_PLACED_KEY)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));
+        if (Config.verdantCoreGenEnabled) {
+            context.register(ADD_VERDANT_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                    biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                    HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.VERDANT_GAIA_CORE_PLACED_KEY)),
+                    GenerationStep.Decoration.UNDERGROUND_ORES));
+        }
 
-        context.register(ADD_VERDANT_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.VERDANT_GAIA_CORE_PLACED_KEY)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));
+        if (Config.volcanicCoreGenEnabled) {
+            context.register(ADD_VOLCANIC_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                    biomes.getOrThrow(BiomeTags.IS_NETHER),
+                    HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.VOLCANIC_GAIA_CORE_PLACED_KEY)),
+                    GenerationStep.Decoration.UNDERGROUND_ORES));
+        }
 
-        context.register(ADD_CHARRED_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.CHARRED_GAIA_CORE_PLACED_KEY)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));
+        if (Config.charredCoreGenEnabled) {
+            context.register(ADD_CHARRED_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                    biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                    HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.CHARRED_GAIA_CORE_PLACED_KEY)),
+                    GenerationStep.Decoration.UNDERGROUND_ORES));
+        }
 
-        context.register(ADD_ADAMANT_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTags.IS_END),
-                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.ADAMANT_GAIA_CORE_PLACED_KEY)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));
+        if (Config.adamantCoreGenEnabled) {
+            context.register(ADD_ADAMANT_GAIA_CORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                    biomes.getOrThrow(BiomeTags.IS_END),
+                    HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.ADAMANT_GAIA_CORE_PLACED_KEY)),
+                    GenerationStep.Decoration.UNDERGROUND_ORES));
+        }
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {

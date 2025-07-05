@@ -17,10 +17,6 @@ public class ModMenuHelper {
         return VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
     }
 
-    /**
-     * This method cannot call moveItemStackTo directly due to protected access.
-     * Instead, call this logic from within your menu class and delegate to this helper for the index math.
-     */
     public static ItemStack quickMoveStackLogic(AbstractContainerMenu menu, Player playerIn, int pIndex, int teInventorySlotCount,
                                                 QuickMoveHandler moveHandler) {
         int vanillaSlotCount = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
