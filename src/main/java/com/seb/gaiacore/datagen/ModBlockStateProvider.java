@@ -48,7 +48,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private void analyzerBlock(RegistryObject<Block> block) {
         String blockName = block.getId().getPath();
 
-        simpleBlockWithItem(block.get(),
+        horizontalBlock(block.get(),
                 models().orientable(
                         blockName,
                         ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "block/analyzer_side"),
@@ -56,5 +56,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
                         ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "block/analyzer_side")
                 )
         );
+
+        simpleBlockItem(block.get(), models().orientable(
+                blockName,
+                ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "block/analyzer_side"),
+                ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "block/analyzer_front"),
+                ResourceLocation.fromNamespaceAndPath(GaiaCore.MOD_ID, "block/analyzer_side")
+        ));
     }
 }
