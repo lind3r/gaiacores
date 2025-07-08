@@ -3,15 +3,17 @@ package com.seb.gaiacores.compat;
 import com.seb.gaiacores.Config;
 import com.seb.gaiacores.GaiaCores;
 import com.seb.gaiacores.block.ModBlocks;
-import com.seb.gaiacores.recipe.LucentGaiaCoreRecipe;
-import com.seb.gaiacores.recipe.VerdantGaiaCoreRecipe;
+import com.seb.gaiacores.recipe.*;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
@@ -30,6 +32,9 @@ public class JEIGaiaCoreModPlugin implements IModPlugin {
 
         registration.addRecipeCategories(new LucentGaiaCoreRecipeCategory(guiHelper));
         registration.addRecipeCategories(new VerdantGaiaCoreRecipeCategory(guiHelper));
+        registration.addRecipeCategories(new VolcanicGaiaCoreRecipeCategory(guiHelper));
+        registration.addRecipeCategories(new CharredGaiaCoreRecipeCategory(guiHelper));
+        registration.addRecipeCategories(new AdamantGaiaCoreRecipeCategory(guiHelper));
     }
 
     @Override
@@ -46,13 +51,31 @@ public class JEIGaiaCoreModPlugin implements IModPlugin {
                 new VerdantGaiaCoreRecipe(new ItemStack(Blocks.OAK_LOG))
         );
 
+        List<VolcanicGaiaCoreRecipe> volcanicGaiaCoreRecipes = List.of(
+                new VolcanicGaiaCoreRecipe(new FluidStack(Fluids.LAVA, 1000))
+        );
+
+        List<CharredGaiaCoreRecipe> charredGaiaCoreRecipes = List.of(
+                new CharredGaiaCoreRecipe(new ItemStack(Items.COAL))
+        );
+
+        List<AdamantGaiaCoreRecipe> adamantGaiaCoreRecipes = List.of(
+                new AdamantGaiaCoreRecipe(new ItemStack(Items.DIAMOND))
+        );
+
         registration.addRecipes(LucentGaiaCoreRecipeCategory.TYPE, lucentGaiaCoreRecipes);
         registration.addRecipes(VerdantGaiaCoreRecipeCategory.TYPE, verdantGaiaCoreRecipes);
+        registration.addRecipes(VolcanicGaiaCoreRecipeCategory.TYPE, volcanicGaiaCoreRecipes);
+        registration.addRecipes(CharredGaiaCoreRecipeCategory.TYPE, charredGaiaCoreRecipes);
+        registration.addRecipes(AdamantGaiaCoreRecipeCategory.TYPE, adamantGaiaCoreRecipes);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.LUCENT_GAIA_CORE.get()), LucentGaiaCoreRecipeCategory.TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.VERDANT_GAIA_CORE.get()), VerdantGaiaCoreRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.VOLCANIC_GAIA_CORE.get()), VolcanicGaiaCoreRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.CHARRED_GAIA_CORE.get()), CharredGaiaCoreRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ADAMANT_GAIA_CORE.get()), AdamantGaiaCoreRecipeCategory.TYPE);
     }
 }

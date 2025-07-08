@@ -21,8 +21,7 @@ import net.minecraft.world.item.ItemStack;
 public class LucentGaiaCoreRecipeCategory implements IRecipeCategory<LucentGaiaCoreRecipe> {
     public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(GaiaCores.MOD_ID, "lucent_gaia_core");
     public static final RecipeType<LucentGaiaCoreRecipe> TYPE = new RecipeType<>(UID, LucentGaiaCoreRecipe.class);
-    public static final ResourceLocation SUN_TEXTURE = ResourceLocation.fromNamespaceAndPath(GaiaCores.MOD_ID,
-            "textures/gui/sun.png");
+    public static final ResourceLocation SUN_TEXTURE = ResourceLocation.fromNamespaceAndPath(GaiaCores.MOD_ID, "textures/gui/sun.png");
 
     private final IDrawable background;
     private final IDrawable icon;

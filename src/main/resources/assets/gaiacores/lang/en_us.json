@@ -20,6 +20,11 @@
   "tooltip.gaiacores.hold_shift": "Hold §eShift§r for more information",
   "tooltip.gaiacores.gaia_core_scanner": "Right-clicking a §5Gaia Core§r with the scanner will store information about that core which can be analyzed in a §lGaia Core Analyzer§r",
 
+  "misc.gaiacores.scanner_saved_block": "Saved block information: ",
+  "misc.gaiacores.not_consumed": "Not consumed",
+  "misc.gaiacores.any_monster": "Any monster",
+
   "creativetab.gaiacores.items": "Gaia Cores Items",
   "creativetab.gaiacores.blocks": "Gaia Cores Blocks"
+
 }

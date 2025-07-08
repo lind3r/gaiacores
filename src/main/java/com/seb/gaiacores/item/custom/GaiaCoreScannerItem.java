@@ -31,23 +31,27 @@ public class GaiaCoreScannerItem extends Item {
 
         context.getItemInHand().set(ModDataComponentTypes.BLOCK_TRANSLATION_KEY.get(), clickedBlock.getDescriptionId()); // This is the translation key
 
-        player.displayClientMessage(Component.literal("Saved block information: " + clickedBlock.getName().getString()), true);
+        player.displayClientMessage(
+                Component.translatable("misc.gaiacores.scanner_saved_block")
+                        .append(Component.literal(clickedBlock.getName().getString())),
+                true
+        );
         return InteractionResult.SUCCESS;
     }
 
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         if (Screen.hasShiftDown()) {
-            pTooltipComponents.add(Component.translatable("tooltip.gaiacores.hold_shift"));
-        } else {
             pTooltipComponents.add(Component.translatable("tooltip.gaiacores.gaia_core_scanner"));
+        } else {
+            pTooltipComponents.add(Component.translatable("tooltip.gaiacores.hold_shift"));
         }
 
         String translationKey = pStack.get(ModDataComponentTypes.BLOCK_TRANSLATION_KEY.get());
         if (translationKey != null && !translationKey.isEmpty()) {
             Component styled = ComponentUtils.wrapInSquareBrackets(Component.translatable(translationKey))
                     .withStyle(ChatFormatting.AQUA);
-            pTooltipComponents.add(Component.literal("Saved block information: ").append(styled));
+            pTooltipComponents.add(Component.translatable("misc.gaiacores.scanner_saved_block").append(styled));
         }
 
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
