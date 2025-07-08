@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_end",
+  "features": "gaiacores:adamant_gaia_core_placed",
+  "step": "underground_ores"
+}

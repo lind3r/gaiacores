@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "gaiacore:block/lucent_gaia_core_powered"
-  }
-}

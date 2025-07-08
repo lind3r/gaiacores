@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "gaiacores:gaia_core_scanner"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "gaiacores:gaia_core_scanner"
+  }
+}

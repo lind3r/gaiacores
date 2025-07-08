@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "gaiacore:block/charred_gaia_core_powered"
-  }
-}

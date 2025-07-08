@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "gaiacore:block/verdant_gaia_core_unpowered"
-  }
-}

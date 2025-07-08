@@ -1,0 +1,25 @@
+{
+  "item.gaiacores.gaia_core_scanner": "Gaia Core Scanner",
+
+  "block.gaiacores.gaia_core_analyzer": "§5Gaia Core Analyzer§r",
+  "block.gaiacores.lucent_gaia_core": "§eLucent Gaia Core§r",
+  "block.gaiacores.volcanic_gaia_core": "§cVolcanic Gaia Core§r",
+  "block.gaiacores.verdant_gaia_core": "§2Verdant Gaia Core§r",
+  "block.gaiacores.charred_gaia_core": "§8Charred Gaia Core§r",
+  "block.gaiacores.adamant_gaia_core": "§3Adamant Gaia Core§r",
+
+  "block.gaiacores.lucent_gaia_core_analyze_text": "§eLucent§r §5Gaia Cores§rs will spawn copper, iron and redstone ore on the sky-facing side when all other sides are occupied by glowstones. The sky-facing side has to be exposed to sunlight. In order to mine the block, it first has to be weakened by an explosive event near the core.",
+  "block.gaiacores.volcanic_gaia_core_analyze_text": "§cVolcanic§r §5Gaia Cores§rs will spawn lava on the ground-facing side, when the sky-facing side is occupied by lava and a hostile entity is killed in that lava. In order to mine the block, it first has to be weakened by an explosive event near the core.",
+  "block.gaiacores.verdant_gaia_core_analyze_text": "§2Verdant§r §5Gaia Cores§rs will spawn an Oak Tree on the sky-facing side when a plank and a stick is thrown on it. In order to mine the block, it first has to be weakened by an explosive event near the core.",
+  "block.gaiacores.charred_gaia_core_analyze_text": "§8Charred§r §5Gaia Cores§rs will turn animals into coal. In order to mine the block, it has first to be weakened by an explosive event near the core.",
+  "block.gaiacores.adamant_gaia_core_analyze_text": "§3Adamant§r §5Gaia Cores§rs turns coal into diamonds. A Creeper will spawn for each coal converted. If there are 10 creepers within a 5 block radius of the core, a big explosion will occur. In order to mine the block, it has first to be weakened by an explosive event near the core.",
+
+  "block.gaiacores.gaia_core_scanner_insert_item": "Insert a §3Gaia Core Scanner§r with a scanned §5Gaia Core§r in the slot to the left.",
+  "block.gaiacores.gaia_core_scanner_invalid_block_scanned": "Item is not a §3Gaia Core Scanner§r or the scanner does not have a §5Gaia Core§r scanned",
+
+  "tooltip.gaiacores.hold_shift": "Hold §eShift§r for more information",
+  "tooltip.gaiacores.gaia_core_scanner": "Right-clicking a §5Gaia Core§r with the scanner will store information about that core which can be analyzed in a §lGaia Core Analyzer§r",
+
+  "creativetab.gaiacores.items": "Gaia Cores Items",
+  "creativetab.gaiacores.blocks": "Gaia Cores Blocks"
+}

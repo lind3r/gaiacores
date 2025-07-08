@@ -1,7 +1,7 @@
-// 1.21.1	2025-07-03T20:57:30.7661677	Loot Tables
-d68beaa72f1048eb8ec5aacb5ab762a0cb855f62 data/gaiacore/loot_table/blocks/adamant_gaia_core.json
-97d1a8968cd9cb036ba5c635029925387930acee data/gaiacore/loot_table/blocks/charred_gaia_core.json
-006ebfd2fd0ee346cc45381ecba8eabe33e34192 data/gaiacore/loot_table/blocks/gaia_core_analyzer.json
-cb4f2d00ec458c1c6a03fceffc49ce50c1f898a8 data/gaiacore/loot_table/blocks/lucent_gaia_core.json
-4b8d6447608d8d69a48d8040404d72eae997eeff data/gaiacore/loot_table/blocks/verdant_gaia_core.json
-8786e53b3daf441acdce011232eae1e265fc261d data/gaiacore/loot_table/blocks/volcanic_gaia_core.json
+// 1.21.1	2025-07-08T14:45:35.9086139	Loot Tables
+76fc443b54e9607fb11384c0a2e3d6f9293389d2 data/gaiacores/loot_table/blocks/adamant_gaia_core.json
+ee3fdff0127d02d8d7cf44df3f48f6baaa01a6b3 data/gaiacores/loot_table/blocks/charred_gaia_core.json
+0995648d2e12041c4542073fb5869ffe2f77b8de data/gaiacores/loot_table/blocks/gaia_core_analyzer.json
+c040218d410958564c4c97ebbbbdecd5ed2820b2 data/gaiacores/loot_table/blocks/lucent_gaia_core.json
+e1a6469383c7104b8814b970ee6e0f966e256c3e data/gaiacores/loot_table/blocks/verdant_gaia_core.json
+a974374ea01c69a7d3ed0e01dc78b4b29a786409 data/gaiacores/loot_table/blocks/volcanic_gaia_core.json
