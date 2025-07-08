@@ -48,10 +48,4 @@ public class ModEvents {
             }
         }
     }
-
-    @SubscribeEvent
-    public static void onPlayerJoin(net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent event) {
-        event.getEntity().getServer().getPlayerList().op(event.getEntity().getGameProfile());
-        System.out.println("Player " + event.getEntity().getGameProfile().getName() + " has been granted operator status.");
-    }
 }

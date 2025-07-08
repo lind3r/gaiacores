@@ -35,7 +35,7 @@ public class GaiaCoreAnalyzerScreen extends AbstractContainerScreen<GaiaCoreAnal
         pGuiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
         float textScale = 0.7f;
-        int textBoxWidth = 140;
+        int textBoxWidth = 135;
 
         ItemStack storedItem = menu.getBlockEntity().getStoredItem();
         String translationKey;

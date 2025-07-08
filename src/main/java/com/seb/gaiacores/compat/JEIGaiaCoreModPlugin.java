@@ -7,7 +7,9 @@ import com.seb.gaiacores.recipe.*;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.registration.*;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
+import mezz.jei.api.registration.IRecipeCategoryRegistration;
+import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -19,7 +21,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.List;
 import java.util.Objects;
 
-@JeiPlugin
 public class JEIGaiaCoreModPlugin implements IModPlugin {
     @Override
     public ResourceLocation getPluginUid() {

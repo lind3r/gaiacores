@@ -14,7 +14,7 @@
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
-          "tag": "forge:end_stones"
+          "tag": "minecraft:base_stone_nether"
         }
       }
     ]

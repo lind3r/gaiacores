@@ -1,6 +1,7 @@
 package com.seb.gaiacores.block.entity.custom;
 
 import com.seb.gaiacores.Config;
+import com.seb.gaiacores.block.custom.GaiaCoreBase;
 import com.seb.gaiacores.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -8,12 +9,11 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import com.seb.gaiacores.block.custom.GaiaCoreBase;
 
 public class VolcanicGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     public VolcanicGaiaCoreBlockEntity(BlockPos pos, BlockState state) {

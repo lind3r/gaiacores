@@ -16,28 +16,6 @@ import java.util.stream.Collectors;
 public class Config {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
-    public static boolean lucentCoreGenEnabled = true;
-    public static boolean verdantCoreGenEnabled = true;
-    public static boolean volcanicCoreGenEnabled = true;
-    public static boolean charredCoreGenEnabled = true;
-    public static boolean adamantCoreGenEnabled = true;
-
-    private static final ForgeConfigSpec.BooleanValue GENERATE_LUCENT_CORES = BUILDER
-            .comment("Include Lucent Gaia Cores in World Generation")
-            .define("generateLucentCores", true);
-    private static final ForgeConfigSpec.BooleanValue GENERATE_VERDANT_CORES = BUILDER
-            .comment("Include Verdant Gaia Cores in World Generation")
-            .define("generateVerdantCores", true);
-    private static final ForgeConfigSpec.BooleanValue GENERATE_VOLCANIC_CORES = BUILDER
-            .comment("Include Volcanic Gaia Cores in World Generation")
-            .define("generateVolcanicCores", true);
-    private static final ForgeConfigSpec.BooleanValue GENERATE_CHARRED_CORES = BUILDER
-            .comment("Include Charred Gaia Cores in World Generation")
-            .define("generateCharredCores", true);
-    private static final ForgeConfigSpec.BooleanValue GENERATE_ADAMANT_CORES = BUILDER
-            .comment("Include Adamant Gaia Cores in World Generation")
-            .define("generateAdamantCores", true);
-
     private static final ForgeConfigSpec.IntValue LUCENT_CORE_COOLDOWN = BUILDER
             .comment("Lucent Gaia Core cooldown (ticks)")
             .defineInRange("lucentCoreCooldown", 100, 0, Integer.MAX_VALUE);
@@ -82,12 +60,6 @@ public class Config {
     @SubscribeEvent
     public static void onLoad(final ModConfigEvent event) {
         if (!event.getConfig().getSpec().equals(SPEC)) return;
-
-        lucentCoreGenEnabled = GENERATE_LUCENT_CORES.get();
-        verdantCoreGenEnabled = GENERATE_VERDANT_CORES.get();
-        volcanicCoreGenEnabled = GENERATE_VOLCANIC_CORES.get();
-        charredCoreGenEnabled = GENERATE_CHARRED_CORES.get();
-        adamantCoreGenEnabled = GENERATE_ADAMANT_CORES.get();
 
         parseOreFrequencies();
     }

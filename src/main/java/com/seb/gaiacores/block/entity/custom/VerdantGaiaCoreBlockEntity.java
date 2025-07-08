@@ -26,11 +26,6 @@ public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if (level == null || level.isClientSide) return;
 
-        if (isOnCooldown()) {
-            cooldown--;
-            return;
-        }
-
         BlockPos above = blockPos.above();
 
         AABB box = new AABB(blockPos).inflate(1);
@@ -58,18 +53,19 @@ public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
                 || aboveState.is(Blocks.DARK_OAK_LOG)
                 || aboveState.is(Blocks.ACACIA_LOG));
 
-        if (hasBoth && !saplingOrTreePresent) {
+        if (!isOnCooldown() && hasBoth && !saplingOrTreePresent) {
             consumeItems(plankEntity, stickEntity);
             placeDirtAndGrowTree(level, blockPos);
-            shouldBePowered = false;
+            setCooldown(Config.getVerdantCoreCooldown());
         }
 
         if (blockState.getValue(GaiaCoreBase.POWERED) != shouldBePowered) {
             level.setBlockAndUpdate(blockPos, blockState.setValue(GaiaCoreBase.POWERED, shouldBePowered));
         }
 
-        setCooldown(Config.getVerdantCoreCooldown());
         setChanged(level, blockPos, blockState);
+
+        if (isOnCooldown()) cooldown--;
     }
 
     private void consumeItems(ItemEntity plankEntity, ItemEntity stickEntity) {
@@ -84,9 +80,12 @@ public class VerdantGaiaCoreBlockEntity extends GaiaCoreBlockEntityBase {
     }
 
     private void placeDirtAndGrowTree(Level level, BlockPos corePos) {
-        BlockPos treePos = corePos.above();
+        BlockPos dirtPos = corePos.above();
+        BlockPos treePos = dirtPos.above();
 
         if (level instanceof ServerLevel serverLevel) {
+            level.setBlock(dirtPos, Blocks.DIRT.defaultBlockState(), 3);
+
             TreeGrower grower = TreeGrower.OAK;
             BlockState fakeState = Blocks.OAK_SAPLING.defaultBlockState().setValue(SaplingBlock.STAGE, 1);
 

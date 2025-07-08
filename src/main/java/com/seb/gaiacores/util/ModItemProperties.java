@@ -1,7 +1,7 @@
 package com.seb.gaiacores.util;
 
-import com.seb.gaiacores.component.ModDataComponentTypes;
 import com.seb.gaiacores.GaiaCores;
+import com.seb.gaiacores.component.ModDataComponentTypes;
 import com.seb.gaiacores.item.ModItems;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;

@@ -25,7 +25,7 @@ public class ModPlacedFeatures {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, LUCENT_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LUCENT_GAIA_CORE_KEY),
-                ModOrePlacement.rareOrePlacement(2, HeightRangePlacement.uniform(
+                ModOrePlacement.rareOrePlacement(1, HeightRangePlacement.uniform(
                         VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
 
         register(context, VOLCANIC_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.VOLCANIC_GAIA_CORE_KEY),
@@ -33,15 +33,15 @@ public class ModPlacedFeatures {
                         VerticalAnchor.absolute(-64), VerticalAnchor.absolute(110))));
 
         register(context, VERDANT_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.VERDANT_GAIA_CORE_KEY),
-                ModOrePlacement.rareOrePlacement(2, HeightRangePlacement.uniform(
+                ModOrePlacement.rareOrePlacement(1, HeightRangePlacement.uniform(
                         VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
 
         register(context, CHARRED_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CHARRED_GAIA_CORE_KEY),
-                ModOrePlacement.rareOrePlacement(2, HeightRangePlacement.uniform(
+                ModOrePlacement.rareOrePlacement(1, HeightRangePlacement.uniform(
                         VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
 
         register(context, ADAMANT_GAIA_CORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.ADAMANT_GAIA_CORE_KEY),
-                ModOrePlacement.rareOrePlacement(2, HeightRangePlacement.uniform(
+                ModOrePlacement.rareOrePlacement(1, HeightRangePlacement.uniform(
                         VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
     }
 

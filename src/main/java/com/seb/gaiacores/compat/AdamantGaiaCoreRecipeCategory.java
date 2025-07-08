@@ -70,6 +70,11 @@ public class AdamantGaiaCoreRecipeCategory implements IRecipeCategory<AdamantGai
     public void setRecipe(IRecipeLayoutBuilder builder, AdamantGaiaCoreRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 30, 0).addItemStack(new ItemStack(Items.COAL));
         builder.addSlot(RecipeIngredientRole.CATALYST, 30, 40).addItemStack(new ItemStack(ModBlocks.ADAMANT_GAIA_CORE.get()));
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 20).addItemStack(recipe.output());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 10).addItemStack(recipe.output());
+        builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 110, 30).addItemStack(new ItemStack(Items.CREEPER_HEAD))
+                .addRichTooltipCallback((recipeSlotView, tooltip) -> {
+                    tooltip.clear();
+                    tooltip.add(Component.translatable("misc.gaiacores.spawn_creeper"));
+                });
     }
 }

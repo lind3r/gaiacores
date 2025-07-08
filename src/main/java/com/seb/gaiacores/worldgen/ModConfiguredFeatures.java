@@ -31,8 +31,8 @@ public class ModConfiguredFeatures {
         register(context, LUCENT_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(stoneReplaceables,
                 ModBlocks.LUCENT_GAIA_CORE.get().defaultBlockState(), 1));
 
-        register(context, VOLCANIC_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(netherReplaceables,
-                ModBlocks.VOLCANIC_GAIA_CORE.get().defaultBlockState(), 1));
+        register(context, ADAMANT_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(netherReplaceables,
+                ModBlocks.ADAMANT_GAIA_CORE.get().defaultBlockState(), 1));
 
         register(context, VERDANT_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(stoneReplaceables,
                 ModBlocks.VERDANT_GAIA_CORE.get().defaultBlockState(), 1));
@@ -40,8 +40,8 @@ public class ModConfiguredFeatures {
         register(context, CHARRED_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(deepslateReplaceables,
                 ModBlocks.CHARRED_GAIA_CORE.get().defaultBlockState(), 1));
 
-        register(context, ADAMANT_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(endStoneReplaceables,
-                ModBlocks.ADAMANT_GAIA_CORE.get().defaultBlockState(), 1));
+        register(context, VOLCANIC_GAIA_CORE_KEY, ModFeatures.GAIA_ORE_FEATURE.get(), new OreConfiguration(endStoneReplaceables,
+                ModBlocks.VOLCANIC_GAIA_CORE.get().defaultBlockState(), 1));
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
