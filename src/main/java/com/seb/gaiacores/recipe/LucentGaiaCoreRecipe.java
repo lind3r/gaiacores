@@ -23,7 +23,13 @@ public record LucentGaiaCoreRecipe(Ingredient inputItem, ItemStack output)
 
     @Override
     public boolean matches(LucentGaiaCoreRecipeInput pInput, Level pLevel) {
-        return !pLevel.isClientSide();
+        if (pLevel.isClientSide()) return false;
+
+        if (inputItem == Ingredient.EMPTY) {
+            return true;
+        }
+
+        return inputItem.test(pInput.input());
     }
 
     @Override
@@ -53,7 +59,7 @@ public record LucentGaiaCoreRecipe(Ingredient inputItem, ItemStack output)
 
     public static class Serializer implements RecipeSerializer<LucentGaiaCoreRecipe> {
         public static final MapCodec<LucentGaiaCoreRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(LucentGaiaCoreRecipe::inputItem),
+                Ingredient.CODEC.fieldOf("ingredient").forGetter(LucentGaiaCoreRecipe::inputItem),
                 ItemStack.CODEC.fieldOf("result").forGetter(LucentGaiaCoreRecipe::output)
         ).apply(inst, LucentGaiaCoreRecipe::new));
 

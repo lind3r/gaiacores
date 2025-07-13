@@ -1,8 +1,6 @@
 {
   "type": "gaiacores:lucent_gaia_core",
-  "ingredient": {
-    "item": "minecraft:coal"
-  },
+  "ingredient": [],
   "result": {
     "id": "minecraft:iron_ore",
     "count": 1
