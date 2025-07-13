@@ -67,6 +67,6 @@ public class LucentGaiaCoreRecipeCategory implements IRecipeCategory<LucentGaiaC
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, LucentGaiaCoreRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 15).addItemStack(recipe.output());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 15).addItemStack(recipe.getResultItem(null));
     }
 }

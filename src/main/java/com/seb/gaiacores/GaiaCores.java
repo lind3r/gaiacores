@@ -2,7 +2,6 @@ package com.seb.gaiacores;
 
 import com.seb.gaiacores.block.ModBlocks;
 import com.seb.gaiacores.block.entity.ModBlockEntities;
-import com.seb.gaiacores.compat.GaiaCoresJeiCompat;
 import com.seb.gaiacores.component.ModDataComponentTypes;
 import com.seb.gaiacores.item.ModItems;
 import com.seb.gaiacores.recipe.ModRecipes;
@@ -16,7 +15,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -43,11 +41,6 @@ public class GaiaCores
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
-
-        if (ModList.get().isLoaded("jei")) {
-            GaiaCoresJeiCompat.init();
-            System.out.println("Hello seb");
-        }
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) { }
