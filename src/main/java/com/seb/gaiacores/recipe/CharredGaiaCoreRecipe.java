@@ -1,22 +1,34 @@
 package com.seb.gaiacores.recipe;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
-public record CharredGaiaCoreRecipe(ItemStack output) implements Recipe<RecipeInput> {
+public record CharredGaiaCoreRecipe(Ingredient inputItem, ItemStack output)
+        implements Recipe<CharredGaiaCoreRecipeInput> {
+
     @Override
-    public boolean matches(RecipeInput pInput, Level pLevel) {
+    public NonNullList<Ingredient> getIngredients() {
+        return NonNullList.create();
+    }
+
+    @Override
+    public boolean matches(CharredGaiaCoreRecipeInput pInput, Level pLevel) {
         return !pLevel.isClientSide();
     }
 
     @Override
-    public ItemStack assemble(RecipeInput pInput, HolderLookup.Provider pRegistries) {
-        return null;
+    public ItemStack assemble(CharredGaiaCoreRecipeInput pInput, HolderLookup.Provider pRegistries) {
+        return output.copy();
     }
 
     @Override
@@ -26,16 +38,39 @@ public record CharredGaiaCoreRecipe(ItemStack output) implements Recipe<RecipeIn
 
     @Override
     public ItemStack getResultItem(HolderLookup.Provider pRegistries) {
-        return null;
+        return output;
     }
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return null;
+        return ModRecipes.CHARRED_GAIA_CORE_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return null;
+        return ModRecipes.CHARRED_GAIA_CORE_TYPE.get();
+    }
+
+    public static class Serializer implements RecipeSerializer<CharredGaiaCoreRecipe> {
+        public static final MapCodec<CharredGaiaCoreRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
+                Ingredient.CODEC.fieldOf("ingredient").forGetter(CharredGaiaCoreRecipe::inputItem),
+                ItemStack.CODEC.fieldOf("result").forGetter(CharredGaiaCoreRecipe::output)
+        ).apply(inst, CharredGaiaCoreRecipe::new));
+
+        public static final StreamCodec<RegistryFriendlyByteBuf, CharredGaiaCoreRecipe> STREAM_CODEC =
+                StreamCodec.composite(
+                        Ingredient.CONTENTS_STREAM_CODEC, CharredGaiaCoreRecipe::inputItem,
+                        ItemStack.STREAM_CODEC, CharredGaiaCoreRecipe::output,
+                        CharredGaiaCoreRecipe::new);
+
+        @Override
+        public MapCodec<CharredGaiaCoreRecipe> codec() {
+            return CODEC;
+        }
+
+        @Override
+        public StreamCodec<RegistryFriendlyByteBuf, CharredGaiaCoreRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
     }
 }

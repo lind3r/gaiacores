@@ -1,0 +1,9 @@
+{
+  "type": "gaiacores:adamant_gaia_core",
+  "ingredient": {
+    "item": "minecraft:coal"
+  },
+  "result": {
+    "id": "minecraft:diamond"
+  }
+}

@@ -16,10 +16,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 
 public class VerdantGaiaCoreRecipeCategory implements IRecipeCategory<VerdantGaiaCoreRecipe> {
     public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(GaiaCores.MOD_ID, "verdant_gaia_core");
@@ -64,8 +61,10 @@ public class VerdantGaiaCoreRecipeCategory implements IRecipeCategory<VerdantGai
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, VerdantGaiaCoreRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 20, 15).addIngredients(Ingredient.of(ItemTags.PLANKS));
-        builder.addSlot(RecipeIngredientRole.INPUT, 40, 15).addIngredients(Ingredient.of(Items.STICK));
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 15).addItemStack(recipe.output());
+        builder.addSlot(RecipeIngredientRole.INPUT, 20, 15).addIngredients(recipe.getIngredients().get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 40, 15).addIngredients(recipe.getIngredients().get(1));
+        // builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 15).addItemStack(recipe.output());
+
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 15).addItemStack(recipe.getResultItem(null));
     }
 }

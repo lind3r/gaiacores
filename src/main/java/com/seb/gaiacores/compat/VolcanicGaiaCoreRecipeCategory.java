@@ -43,7 +43,7 @@ public class VolcanicGaiaCoreRecipeCategory implements IRecipeCategory<VolcanicG
     @Override
     public void draw(VolcanicGaiaCoreRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         IRecipeCategory.super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
-        guiGraphics.drawString(Minecraft.getInstance().font, "Any monster", 10, 5, 0x404040, false);
+        guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable("misc.gaiacores.any_monster"), 10, 5, 0x404040, false);
         arrow.draw(guiGraphics, 65, 20);
         downArrow.draw(guiGraphics, 35, 20);
     }
@@ -70,7 +70,6 @@ public class VolcanicGaiaCoreRecipeCategory implements IRecipeCategory<VolcanicG
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, VolcanicGaiaCoreRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 30, 40).addFluidStack(Fluids.LAVA);
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 20).addFluidStack(Fluids.LAVA, 1000);
-    }
+        builder.addSlot(RecipeIngredientRole.CATALYST, 30, 40).addFluidStack(Fluids.LAVA);
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 20).addFluidStack(Fluids.LAVA, 1000);}
 }

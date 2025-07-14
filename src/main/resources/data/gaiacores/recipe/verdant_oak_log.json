@@ -1,0 +1,12 @@
+{
+  "type": "gaiacores:verdant_gaia_core",
+  "first": {
+    "tag": "minecraft:planks"
+  },
+  "second": {
+    "item": "minecraft:stick"
+  },
+  "result": {
+    "id": "minecraft:oak_log"
+  }
+}

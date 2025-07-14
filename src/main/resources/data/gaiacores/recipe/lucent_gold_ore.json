@@ -2,7 +2,6 @@
   "type": "gaiacores:lucent_gaia_core",
   "ingredient": [],
   "result": {
-    "id": "minecraft:iron_ore",
-    "count": 1
+    "id": "minecraft:gold_ore"
   }
 }

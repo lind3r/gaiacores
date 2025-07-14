@@ -23,13 +23,7 @@ public record LucentGaiaCoreRecipe(Ingredient inputItem, ItemStack output)
 
     @Override
     public boolean matches(LucentGaiaCoreRecipeInput pInput, Level pLevel) {
-        if (pLevel.isClientSide()) return false;
-
-        if (inputItem == Ingredient.EMPTY) {
-            return true;
-        }
-
-        return inputItem.test(pInput.input());
+        return !pLevel.isClientSide();
     }
 
     @Override
@@ -79,6 +73,4 @@ public record LucentGaiaCoreRecipe(Ingredient inputItem, ItemStack output)
             return STREAM_CODEC;
         }
     }
-
-
 }

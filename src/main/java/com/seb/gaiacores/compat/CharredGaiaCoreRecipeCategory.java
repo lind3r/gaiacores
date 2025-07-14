@@ -42,7 +42,7 @@ public class CharredGaiaCoreRecipeCategory implements IRecipeCategory<CharredGai
     @Override
     public void draw(CharredGaiaCoreRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         IRecipeCategory.super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
-        guiGraphics.drawString(Minecraft.getInstance().font, "Any animal", 10, 5, 0x404040, false);
+        guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable("misc.gaiacores.any_animal"), 10, 5, 0x404040, false);
         arrow.draw(guiGraphics, 65, 20);
         downArrow.draw(guiGraphics, 35, 20);
     }
@@ -70,6 +70,6 @@ public class CharredGaiaCoreRecipeCategory implements IRecipeCategory<CharredGai
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, CharredGaiaCoreRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.CATALYST, 30, 40).addItemStack(new ItemStack(ModBlocks.CHARRED_GAIA_CORE.get()));
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 20).addItemStack(recipe.output());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 20).addItemStack(recipe.getResultItem(null));
     }
 }
