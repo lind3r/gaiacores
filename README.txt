@@ -1,1 +1,1 @@
-https://legacy.curseforge.com/minecraft/mc-mods/gaia-cores
+[Gaia Cores on Curseforge](https://www.curseforge.com/minecraft/mc-mods/gaia-cores)
